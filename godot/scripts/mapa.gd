@@ -1,11 +1,19 @@
 extends Node2D
 
-
-# Called when the node enters the scene tree for the first time.
+# Test
 func _ready() -> void:
 	var _fila := FilaPrioridade.new()
+	var estado := Estado.new()
 
+	estado.posicao = Vector2i(5, 1)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
+	var mapa := [
+			[3, 1, 2, 1, 1, 3],
+			[1, 2, 1, 3, 3, 1],
+			[1, 3, 1, 1, 2, 1],
+			[1, 1, 2, 1, 1, 1],
+			[1, 2, 1, 3, 1, 1],
+			[1, 1, 2, 1, 3, 3]
+	]
+
+	print(estado.acoes(mapa))
