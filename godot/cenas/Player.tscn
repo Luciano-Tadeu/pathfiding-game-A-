@@ -2,6 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://bwb54wonufpps" path="res://Sprout Lands - Sprites - Basic pack/Sprout Lands - Sprites - Basic pack/Characters/Basic Charakter Spritesheet.png" id="1_q1pd5"]
 [ext_resource type="Script" uid="uid://5wdxtsnd546k" path="res://scripts/game/movement.gd" id="1_y47sr"]
+[ext_resource type="AudioStream" uid="uid://c4o78c2p1gad8" path="res://sounds/footstep05.ogg" id="3_7v0vg"]
+[ext_resource type="AudioStream" uid="uid://bst2lrroifnew" path="res://sounds/confirmation_002.ogg" id="3_53ko3"]
+[ext_resource type="AudioStream" uid="uid://ogf2c0842obx" path="res://sounds/confirmation_001.ogg" id="4_aerhe"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y47sr"]
 atlas = ExtResource("1_q1pd5")
@@ -151,3 +154,13 @@ animation = &"Up"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=710733468]
 position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_sugan")
+
+[node name="Sound_Vitoria" type="AudioStreamPlayer2D" parent="." unique_id=2057878023]
+stream = ExtResource("3_53ko3")
+
+[node name="Sound_Inicio" type="AudioStreamPlayer2D" parent="." unique_id=968554230]
+stream = ExtResource("4_aerhe")
+
+[node name="Sound_Passo" type="AudioStreamPlayer2D" parent="." unique_id=848654806]
+stream = ExtResource("3_7v0vg")
+volume_db = -12.0

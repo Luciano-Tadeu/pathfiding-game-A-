@@ -24,6 +24,11 @@ var posicao_grid: Vector2i
 var movendo: bool = false
 var caminho_percorrido = []
 
+# SoundFX
+@onready var som_passo = $Sound_Passo
+@onready var som_inicio = $Sound_Inicio
+@onready var som_vitoria = $Sound_Vitoria
+
 func _ready():
 	# Converte a posição atual em píxeis para a posição no grid
 	posicao_grid = Vector2i(position) / tamanho_tile
@@ -73,6 +78,7 @@ func tentar_mover(direcao: Vector2i):
 				
 			caminho_percorrido.append(posicao_grid)
 			sprite.play("Up")
+			som_inicio.play()
 			tempo_movimento = 1.0
 			deslizar_para_novo_bloco()
 			tempo_movimento = 0.5
@@ -85,6 +91,7 @@ func tentar_mover(direcao: Vector2i):
 		caminho_percorrido.append(posicao_grid)
 		sprite.play("Up")
 		tempo_movimento = 1.0
+		som_vitoria.play()
 		deslizar_para_novo_bloco()
 		tempo_movimento = 0.5
 		return
@@ -105,12 +112,16 @@ func tentar_mover(direcao: Vector2i):
 			match direcao:
 				Vector2i.RIGHT:
 					sprite.play("Right")
+					som_passo.play()
 				Vector2i.LEFT:
 					sprite.play("Left")
+					som_passo.play()
 				Vector2i.DOWN:
 					sprite.play("Down")
+					som_passo.play()
 				Vector2i.UP:
 					sprite.play("Up")
+					som_passo.play()
 			
 			posicao_grid = nova_posicao_grid
 			caminho_percorrido.append(posicao_grid)

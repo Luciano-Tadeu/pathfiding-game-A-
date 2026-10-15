@@ -3,6 +3,7 @@
 [ext_resource type="TileSet" uid="uid://c36x8j5r76kbd" path="res://cenas/tileset.tres" id="1_mf3nc"]
 [ext_resource type="PackedScene" uid="uid://ceqfdrh14qevq" path="res://cenas/Menu_Pause.tscn" id="5_5re78"]
 [ext_resource type="PackedScene" uid="uid://dl3yee2modhxk" path="res://cenas/Menu_Finish.tscn" id="6_3hemr"]
+[ext_resource type="AudioStream" uid="uid://d1ukllobl18o" path="res://sounds/regrowth wip.wav" id="7_x7mbq"]
 [ext_resource type="Script" uid="uid://dtgh7mjaodyvs" path="res://scripts/game/randomizer.gd" id="10_8v76g"]
 [ext_resource type="FontFile" uid="uid://bp70v1mryrko0" path="res://Sprout Lands - Sprites - Basic pack/Sprout Lands - Sprites - Basic pack/Font/Pixuf.ttf" id="10_tfyqd"]
 [ext_resource type="PackedScene" uid="uid://dck8cdiy1nn34" path="res://cenas/Player.tscn" id="11_anr53"]
@@ -102,5 +103,10 @@ visible = false
 
 [node name="MenuFinish" parent="." unique_id=469886279 instance=ExtResource("6_3hemr")]
 visible = false
+
+[node name="MusicaPrincipal" type="AudioStreamPlayer" parent="." unique_id=262881687]
+process_mode = 3
+stream = ExtResource("7_x7mbq")
+autoplay = true
 
 [connection signal="finish" from="Player" to="MenuFinish" method="_on_player_finish"]
