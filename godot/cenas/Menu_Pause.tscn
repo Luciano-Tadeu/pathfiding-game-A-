@@ -1,0 +1,45 @@
+[gd_scene format=4 uid="uid://ceqfdrh14qevq"]
+
+[ext_resource type="Script" uid="uid://dkdcpvpbjk2c0" path="res://scripts/game/menu_pause.gd" id="1_3e6i0"]
+[ext_resource type="TileSet" uid="uid://c36x8j5r76kbd" path="res://cenas/tileset.tres" id="2_3ac3i"]
+[ext_resource type="FontFile" uid="uid://bp70v1mryrko0" path="res://Sprout Lands - Sprites - Basic pack/Sprout Lands - Sprites - Basic pack/Font/Pixuf.ttf" id="3_3ac3i"]
+
+[node name="MenuPause" type="CanvasLayer" unique_id=1409206553]
+process_mode = 3
+script = ExtResource("1_3e6i0")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1127943833]
+offset_right = 320.0
+offset_bottom = 180.0
+color = Color(0, 0, 0, 0.78431374)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="ColorRect" unique_id=979112588]
+tile_map_data = PackedByteArray("AAAHAAIABwABAAEAAAAIAAIABwABAAEAAAAJAAIABwABAAEAAAAKAAIABwABAAEAAAALAAIABwABAAEAAAAMAAIABwABAAEAAAANAAIABwABAAEAAAAGAAIABwABAAEAAAAGAAMABwABAAEAAAAGAAQABwABAAEAAAAGAAUABwABAAEAAAAGAAYABwABAAEAAAAGAAcABwABAAEAAAAHAAcABwABAAEAAAAIAAcABwABAAEAAAAJAAcABwABAAEAAAAKAAcABwABAAEAAAALAAcABwABAAEAAAAMAAcABwABAAEAAAANAAcABwABAAEAAAANAAYABwABAAEAAAANAAUABwABAAEAAAANAAQABwABAAEAAAANAAMABwABAAEAAAAMAAMABwABAAEAAAALAAMABwABAAEAAAAKAAMABwABAAEAAAAJAAMABwABAAEAAAAIAAMABwABAAEAAAAHAAMABwABAAEAAAAHAAQABwABAAEAAAAIAAQABwABAAEAAAAJAAQABwABAAEAAAAKAAQABwABAAEAAAALAAQABwABAAEAAAAMAAQABwABAAEAAAAMAAUABwABAAEAAAALAAUABwABAAEAAAAKAAUABwABAAEAAAAJAAUABwABAAEAAAAIAAUABwABAAEAAAAHAAUABwABAAEAAAAHAAYABwABAAEAAAAIAAYABwABAAEAAAAJAAYABwABAAEAAAAKAAYABwABAAEAAAALAAYABwABAAEAAAAMAAYABwABAAEAAAAKAAgABwABAAEAAAAJAAgABwABAAEAAAAIAAgABwABAAEAAAAHAAgABwABAAEAAAAGAAgABwABAAEAAAALAAgABwABAAEAAAAMAAgABwABAAEAAAANAAgABwABAAEAAAAFAAEABwAAAAAAAAAOAAEABwACAAAAAAAFAAkABwAAAAIAAAAOAAkABwACAAIAAAAGAAkABwABAAIAAAAHAAkABwABAAIAAAAIAAkABwABAAIAAAAJAAkABwABAAIAAAAKAAkABwABAAIAAAALAAkABwABAAIAAAAMAAkABwABAAIAAAANAAkABwABAAIAAAAOAAgABwACAAEAAAAOAAcABwACAAEAAAAOAAYABwACAAEAAAAOAAUABwACAAEAAAAOAAQABwACAAEAAAAOAAMABwACAAEAAAAOAAIABwACAAEAAAANAAEABwABAAAAAAAMAAEABwABAAAAAAALAAEABwABAAAAAAAKAAEABwABAAAAAAAJAAEABwABAAAAAAAIAAEABwABAAAAAAAHAAEABwABAAAAAAAGAAEABwABAAAAAAAFAAIABwAAAAEAAAAFAAMABwAAAAEAAAAFAAQABwAAAAEAAAAFAAUABwAAAAEAAAAFAAYABwAAAAEAAAAFAAcABwAAAAEAAAAFAAgABwAAAAEAAAA=")
+tile_set = ExtResource("2_3ac3i")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect" unique_id=1551709230]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 52.0
+offset_right = 217.0
+offset_bottom = 118.0
+alignment = 1
+
+[node name="Button_Continuar" type="Button" parent="ColorRect/VBoxContainer" unique_id=1147074362]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.9490196, 0.9490196, 0, 1)
+theme_override_fonts/font = ExtResource("3_3ac3i")
+theme_override_font_sizes/font_size = 20
+text = "Continuar"
+flat = true
+
+[node name="Button_Sair" type="Button" parent="ColorRect/VBoxContainer" unique_id=672187030]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.9490196, 0.9490196, 0, 1)
+theme_override_fonts/font = ExtResource("3_3ac3i")
+theme_override_font_sizes/font_size = 20
+text = "Sair do Jogo"
+flat = true
+
+[connection signal="pressed" from="ColorRect/VBoxContainer/Button_Continuar" to="." method="_on_button_continuar_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Button_Sair" to="." method="_on_button_sair_pressed"]

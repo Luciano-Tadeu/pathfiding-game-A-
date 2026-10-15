@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dck8cdiy1nn34"]
 
 [ext_resource type="Texture2D" uid="uid://bwb54wonufpps" path="res://Sprout Lands - Sprites - Basic pack/Sprout Lands - Sprites - Basic pack/Characters/Basic Charakter Spritesheet.png" id="1_q1pd5"]
-[ext_resource type="Script" uid="uid://5wdxtsnd546k" path="res://cenas/movement.gd" id="1_y47sr"]
+[ext_resource type="Script" uid="uid://5wdxtsnd546k" path="res://scripts/game/movement.gd" id="1_y47sr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y47sr"]
 atlas = ExtResource("1_q1pd5")
