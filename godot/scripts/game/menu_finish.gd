@@ -11,6 +11,7 @@ func _on_button_sair_pressed() -> void:
 
 
 func _on_button_reiniciar_pressed() -> void:
+	get_tree().paused = false
 	get_tree().reload_current_scene()
 
 
