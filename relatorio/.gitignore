@@ -1,0 +1,40 @@
+# Diretório de build (todos os artefatos vão aqui)
+build/
+pdf/
+
+# LaTeX build artifacts (caso compilado fora do build/)
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.idx
+*.ilg
+*.ind
+*.loa
+*.lof
+*.log
+*.lot
+*.nlo
+*.nls
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.ist
+
+# PDF gerado (manter o modelo PDF do template)
+# Descomente a linha abaixo se quiser ignorar o PDF final também:
+# main.pdf
+
+# Editor
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json

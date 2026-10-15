@@ -1,0 +1,41 @@
+\ProvidesPackage{formatacao}
+
+\def\@formataautorcapa{%
+  \parbox[b]{\titlepagewinwidth}
+  {%
+    \centering\vbox to \titlepagewinheight
+    {%
+      \vspace*{\fill}
+      {\textbf{\imprimirautor}}
+      \vspace*{\fill}
+    }
+  }
+}
+
+\def\@formatatitulocapa{%
+  \parbox[b]{\titlepagewinwidth}
+  {%
+    \centering\vbox to \titlepagewinheight
+    {%
+      \vspace*{\fill}
+      {\textbf{\imprimirtitulo}\par}
+      \vspace*{\fill}
+    }
+  }
+}
+
+\chapterstyle{abnt}
+\setboolean{ABNTEXupperchapter}{true}
+\renewcommand{\cftsubsubsectionfont}{\itshape}
+\renewcommand{\cftsubsubsectionpagefont}{\normalfont}
+\captionnamefont{\ABNTEXfontereduzida}
+\captiontitlefont{\ABNTEXfontereduzida}
+
+\renewcommand{\ABNTEXchapterfont}{\rmfamily\bfseries}
+\renewcommand{\ABNTEXchapterfontsize}{\normalsize}
+\renewcommand{\ABNTEXsectionfont}{\rmfamily\bfseries}
+\renewcommand{\ABNTEXsectionfontsize}{\normalsize}
+\renewcommand{\ABNTEXsubsectionfont}{\rmfamily\mdseries}
+\renewcommand{\ABNTEXsubsectionfontsize}{\normalsize}
+\renewcommand{\ABNTEXsubsubsectionfont}{\rmfamily\itshape}
+\renewcommand{\ABNTEXsubsubsectionfontsize}{\normalsize}
