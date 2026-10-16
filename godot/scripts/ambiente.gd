@@ -4,7 +4,6 @@ extends Node2D
 # Test
 func _ready() -> void:
 	var _fila := FilaPrioridade.new()
-	var estado := Estado.new(null, Vector2i(0, 0))
 
 	var matrix := [
 		[0, 0, 0, 0, 0, 0],
@@ -24,9 +23,13 @@ func _ready() -> void:
 				matrix[y][x] = custo
 	# print(matrix)
 
+	var res := AEstrela.astar(matrix)
+	var estado: Estado = res["estado"]
+	var stats: Dictionary = res["stats"]
 
-	# print(estado)
-	estado = AEstrela.astar(matrix)
 	print(estado)
-	var caminho = AEstrela.reconstruir_caminho(estado)
+	var caminho := AEstrela.reconstruir_caminho(estado)
+	stats["tamanho_caminho"] = caminho.size()
 	print(caminho)
+
+	print(res["stats"])
