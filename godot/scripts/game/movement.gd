@@ -76,7 +76,7 @@ func tentar_mover(direcao: Vector2i):
 				energia_gasta += custo
 				atualizar_painel_energia()
 				
-			caminho_percorrido.append(posicao_grid)
+			caminho_percorrido.append((posicao_grid - Vector2i(7, 3)))
 			sprite.play("Up")
 			som_inicio.play()
 			tempo_movimento = 1.0
@@ -88,7 +88,8 @@ func tentar_mover(direcao: Vector2i):
 	if nova_posicao_grid.x == 12 and nova_posicao_grid.y == 2:
 		finished = true  
 		posicao_grid = nova_posicao_grid + direcao
-		caminho_percorrido.append(posicao_grid)
+
+		print(caminho_percorrido)
 		sprite.play("Up")
 		tempo_movimento = 1.0
 		som_vitoria.play()
@@ -124,7 +125,7 @@ func tentar_mover(direcao: Vector2i):
 					som_passo.play()
 			
 			posicao_grid = nova_posicao_grid
-			caminho_percorrido.append(posicao_grid)
+			caminho_percorrido.append((posicao_grid - Vector2i(7, 3)))
 			deslizar_para_novo_bloco()
 
 # Função que Movimenta o personagem no Grid 6x6

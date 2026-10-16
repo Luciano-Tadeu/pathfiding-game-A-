@@ -28,3 +28,5 @@ func _ready() -> void:
 	# print(estado)
 	estado = AEstrela.astar(matrix)
 	print(estado)
+	var caminho = AEstrela.reconstruir_caminho(estado)
+	print(caminho)

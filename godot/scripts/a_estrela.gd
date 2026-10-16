@@ -35,3 +35,14 @@ static func astar(matriz: Array, inicio := Vector2i(0, 5), obj := Vector2i(5, 0)
 				# print(filho.posicao)
 
 	return null
+
+static func reconstruir_caminho(estado_final: Estado) -> Array[Vector2i]:
+	var caminho: Array[Vector2i] = []
+	var atual: Estado = estado_final
+	
+	while atual != null:
+		caminho.append(atual.posicao)
+		atual = atual.pai
+		
+	caminho.reverse()
+	return caminho
