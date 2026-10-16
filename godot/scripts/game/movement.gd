@@ -44,13 +44,13 @@ func _unhandled_input(event):
 		
 	var direcao = Vector2i.ZERO
 	
-	if event.is_action_pressed("ui_right"):
+	if event.is_action_pressed("Direita"):
 		direcao = Vector2i.RIGHT
-	elif event.is_action_pressed("ui_left"):
+	elif event.is_action_pressed("Esquerda"):
 		direcao = Vector2i.LEFT
-	elif event.is_action_pressed("ui_down"):
+	elif event.is_action_pressed("Trás"):
 		direcao = Vector2i.DOWN
-	elif event.is_action_pressed("ui_up"):
+	elif event.is_action_pressed("Frente"):
 		direcao = Vector2i.UP
 		
 	if direcao != Vector2i.ZERO:
