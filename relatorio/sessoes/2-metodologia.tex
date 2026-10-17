@@ -4,20 +4,29 @@
 A forma de implementação utilizada é o algoritmo de busca A* (A-Estrela), a forma de solução mais conhecida da busca de melhor escolha, que minimiza o custo total estimado da solução.
 As seções a seguir explicam as fórmulas do algoritmo, com base em \citeonline[seção 3.5.2]{ia2013}.
 
+\section{Representação do Problema}
+O ambiente do jogo é uma grade, implementada como uma matriz bidimensional $6\times 6$, com $36$ células ou terrenos (malha ou \textit{grid}), como na Figura \ref{fig:gird_game}.
+Cada célula da grade corresponde a um estado, que armazena a posição $(x, y)$, com movimentação de célula em célula (acima, abaixo, esquerda e direita).
+O custo de cada passo é o ``Custo de Energia'' da célula onde entra (Grama $1$, Morro $2$, Água $3$), na Tabela \ref{tab:custo_enegia}. A fórmula de somatório do ``Custo de Energia'' é
+\begin{equation}\sum_{i = 0}^{k}  c(v_i) \end{equation} onde $v_0$ é a entrada, $v_k$ é a saída e $c(v_i)$ é o custo de cada célula do caminho.
+A entrada é a célula $(0,5)$, onde A* começa, e a saída é a célula $(5,0)$.
+
+
+
 \section{A Definição}
-Implementado o estado do jogo para o nucleo do algoritmo A* (A-Estrela). Definidas as variáveis seguintes:
+Foi implementado o estado do jogo para o núcleo do algoritmo A* (A-Estrela). Foram definidas as seguintes variáveis:
 
 \begin{itemize}
-    \item \textbf{Pai \textbackslash\ predecessor $\boldsymbol{\pi}$:} guarda uma referência ao nó (ao estado) para reconstruir o caminho de um filho início até o nó objetivo;
-    \item \textbf{$\boldsymbol{g(v)}$:} é o custo real acumulado do nó início até o nó objetivo $v$;
-    \item \textbf{$\boldsymbol{h(v)}$:} é a heurística para estimar a distância de um vértice até o estado objetivo, utilizando \textit{Manhattan};
-    \item \textbf{$\boldsymbol{f(v)}$:} é a prioridade do estado, o custo  estimado da solução de menor gasto de energia por $v$, a fórmula:
+    \item \textbf{Pai / predecessor $\boldsymbol{\pi}$:} guarda uma referência ao estado para reconstruir o caminho do estado de saída de volta até o estado de entrada;
+    \item \textbf{$\boldsymbol{g(v)}$:} é o custo real acumulado do estado de entrada até o estado $v$;
+    \item \textbf{$\boldsymbol{h(v)}$:} é a heurística para estimar a distância do estado $v$ até o estado de saída, utilizando a distância de Manhattan;
+    \item \textbf{$\boldsymbol{f(v)}$:} é a prioridade do estado, o custo estimado da solução de menor gasto de energia que passa por $v$, a fórmula:
           \begin{equation} f(v) = g(v) + h(v) \end{equation}
 \end{itemize}
 
 \begin{figure}[H]
     \centering
-    \caption{Classe de Estado em \textit{GDScript}}
+    \caption{Classe Estado em \textit{GDScript}}
     \label{fig:code_estado}
     \includegraphics[width=\textwidth]{figuras/scripts/code_estado.png}
     \fonte{Elaborado pelos autores (2026).}
