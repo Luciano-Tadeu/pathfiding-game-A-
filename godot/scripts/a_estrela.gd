@@ -1,7 +1,7 @@
 class_name AEstrela
 
 
-static func astar(matriz: Array, inicio := Vector2i(0, 5), obj := Vector2i(5, 0)) -> Dictionary:
+static func astar(matriz: Array, entrada := Vector2i(0, 5), saida := Vector2i(5, 0)) -> Dictionary:
 	var stats: Dictionary = {
 		"nos_enfileirados": 0,
 		"tempo_inicio": Time.get_ticks_usec(),
@@ -18,10 +18,10 @@ static func astar(matriz: Array, inicio := Vector2i(0, 5), obj := Vector2i(5, 0)
 	var visitada := {}
 	var g_values := {}
 
-	var start := Estado.new(null, inicio)
-	start.g = matriz[inicio.y][inicio.x]
-	start.h = start.manhattan(inicio, obj)
-	g_values[inicio] = start.g # Inicializar custo do estado inicial
+	var start := Estado.new(null, entrada)
+	start.g = matriz[entrada.y][entrada.x]
+	start.h = start.manhattan(entrada, saida)
+	g_values[entrada] = start.g # Inicializar custo do estado entrada
 
 	Q.enfileirar(start, start.f)
 	stats["nos_enfileirados"] += 1
@@ -36,7 +36,7 @@ static func astar(matriz: Array, inicio := Vector2i(0, 5), obj := Vector2i(5, 0)
 		visitada[v.posicao] = true
 		# stats["nos_visitados"] += 1
 
-		if v.posicao == obj:
+		if v.posicao == saida:
 			stats["custo_energia"] = v.g
 			stats["tempo_fim"] = Time.get_ticks_usec()
 			stats["tempo_computacao"] = stats["tempo_fim"] - stats["tempo_inicio"]
@@ -49,7 +49,7 @@ static func astar(matriz: Array, inicio := Vector2i(0, 5), obj := Vector2i(5, 0)
 				g_values[u] = novo_g
 				var filho := Estado.new(v, u)
 				filho.g = novo_g
-				filho.h = filho.manhattan(u, obj)
+				filho.h = filho.manhattan(u, saida)
 				Q.enfileirar(filho, filho.f)
 				stats["nos_enfileirados"] += 1
 
