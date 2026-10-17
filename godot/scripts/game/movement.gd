@@ -10,9 +10,10 @@ extends CharacterBody2D
 
 # Animações e Sistema de Energia
 @onready var sprite = $AnimatedSprite2D
-@export var mapa : TileMapLayer
-@export var texto_energia: RichTextLabel
-var energia_gasta: int = 0
+@onready var mapa : TileMapLayer = $"../TileMapLayer_Game"
+@onready var texto_energia: RichTextLabel = $"../QuadroDireitaEnergia"
+var energia_gasta: int = 0 
+var historico_energia: Array = []
 
 # Flags de Inicio e Fim
 var started = false
@@ -20,7 +21,7 @@ var finished = false
 signal finish(energy_cost)
 
 # Para guardar a movimentação do player
-var posicao_grid: Vector2i
+var posicao_grid: Vector2i = Vector2i(3, 10)
 var movendo: bool = false
 var caminho_percorrido = []
 
@@ -69,9 +70,10 @@ func tentar_mover(direcao: Vector2i):
 			if tile_data:
 				var custo = tile_data.get_custom_data('custo_energia')
 				energia_gasta += custo
+				historico_energia.append(energia_gasta)
 				atualizar_painel_energia()
 				
-			caminho_percorrido.append(posicao_grid)
+			caminho_percorrido.append(direcao)
 			sprite.play("Up")
 			tempo_movimento = 1.0
 			deslizar_para_novo_bloco()
@@ -82,7 +84,7 @@ func tentar_mover(direcao: Vector2i):
 	if nova_posicao_grid.x == 12 and nova_posicao_grid.y == 2:
 		finished = true  
 		posicao_grid = nova_posicao_grid + direcao
-		caminho_percorrido.append(posicao_grid)
+		caminho_percorrido.append(direcao)
 		sprite.play("Up")
 		tempo_movimento = 1.0
 		deslizar_para_novo_bloco()
@@ -99,6 +101,7 @@ func tentar_mover(direcao: Vector2i):
 			if tile_data:
 				var custo = tile_data.get_custom_data('custo_energia')
 				energia_gasta += custo
+				historico_energia.append(energia_gasta)
 				atualizar_painel_energia()
 				
 			# Dispara as animações
@@ -113,7 +116,7 @@ func tentar_mover(direcao: Vector2i):
 					sprite.play("Up")
 			
 			posicao_grid = nova_posicao_grid
-			caminho_percorrido.append(posicao_grid)
+			caminho_percorrido.append(direcao)
 			deslizar_para_novo_bloco()
 
 # Função que Movimenta o personagem no Grid 6x6

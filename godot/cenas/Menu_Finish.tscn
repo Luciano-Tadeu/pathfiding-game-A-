@@ -3,6 +3,15 @@
 [ext_resource type="Script" uid="uid://dn45w2pff7vos" path="res://scripts/game/menu_finish.gd" id="1_mwafi"]
 [ext_resource type="TileSet" uid="uid://c36x8j5r76kbd" path="res://cenas/tileset.tres" id="2_lochr"]
 [ext_resource type="FontFile" uid="uid://bp70v1mryrko0" path="res://Sprout Lands - Sprites - Basic pack/Sprout Lands - Sprites - Basic pack/Font/Pixuf.ttf" id="3_rkqe1"]
+[ext_resource type="Script" uid="uid://cpc1rt35dvt5q" path="res://scripts/game/tabela_resultados.gd" id="4_lochr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_f6saj"]
+font = ExtResource("3_rkqe1")
+font_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_p8o1d"]
+font = ExtResource("3_rkqe1")
+font_size = 8
 
 [node name="MenuFinish" type="CanvasLayer" unique_id=1409206553]
 process_mode = 3
@@ -14,33 +23,133 @@ offset_bottom = 180.0
 color = Color(0, 0, 0, 0.78431374)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="ColorRect" unique_id=979112588]
-tile_map_data = PackedByteArray("AAAHAAIABwABAAEAAAAIAAIABwABAAEAAAAJAAIABwABAAEAAAAKAAIABwABAAEAAAALAAIABwABAAEAAAAMAAIABwABAAEAAAANAAIABwABAAEAAAAGAAIABwABAAEAAAAGAAMABwABAAEAAAAGAAQABwABAAEAAAAGAAUABwABAAEAAAAGAAYABwABAAEAAAAGAAcABwABAAEAAAAHAAcABwABAAEAAAAIAAcABwABAAEAAAAJAAcABwABAAEAAAAKAAcABwABAAEAAAALAAcABwABAAEAAAAMAAcABwABAAEAAAANAAcABwABAAEAAAANAAYABwABAAEAAAANAAUABwABAAEAAAANAAQABwABAAEAAAANAAMABwABAAEAAAAMAAMABwABAAEAAAALAAMABwABAAEAAAAKAAMABwABAAEAAAAJAAMABwABAAEAAAAIAAMABwABAAEAAAAHAAMABwABAAEAAAAHAAQABwABAAEAAAAIAAQABwABAAEAAAAJAAQABwABAAEAAAAKAAQABwABAAEAAAALAAQABwABAAEAAAAMAAQABwABAAEAAAAMAAUABwABAAEAAAALAAUABwABAAEAAAAKAAUABwABAAEAAAAJAAUABwABAAEAAAAIAAUABwABAAEAAAAHAAUABwABAAEAAAAHAAYABwABAAEAAAAIAAYABwABAAEAAAAJAAYABwABAAEAAAAKAAYABwABAAEAAAALAAYABwABAAEAAAAMAAYABwABAAEAAAAKAAgABwABAAEAAAAJAAgABwABAAEAAAAIAAgABwABAAEAAAAHAAgABwABAAEAAAAGAAgABwABAAEAAAALAAgABwABAAEAAAAMAAgABwABAAEAAAANAAgABwABAAEAAAAGAAkABwABAAIAAAAHAAkABwABAAIAAAAIAAkABwABAAIAAAAJAAkABwABAAIAAAAKAAkABwABAAIAAAALAAkABwABAAIAAAAMAAkABwABAAIAAAANAAkABwABAAIAAAANAAEABwABAAAAAAAMAAEABwABAAAAAAALAAEABwABAAAAAAAKAAEABwABAAAAAAAJAAEABwABAAAAAAAIAAEABwABAAAAAAAHAAEABwABAAAAAAAGAAEABwABAAAAAAAFAAkABwABAAIAAAAEAAkABwABAAIAAAADAAkABwABAAIAAAAOAAkABwABAAIAAAAPAAkABwABAAIAAAAQAAkABwABAAIAAAAOAAEABwABAAAAAAAPAAEABwABAAAAAAAQAAEABwABAAAAAAAFAAEABwABAAAAAAAEAAEABwABAAAAAAADAAEABwABAAAAAAACAAEABwAAAAAAAAARAAEABwACAAAAAAACAAkABwAAAAIAAAARAAkABwACAAIAAAARAAgABwACAAEAAAARAAcABwACAAEAAAARAAYABwACAAEAAAARAAUABwACAAEAAAARAAQABwACAAEAAAARAAMABwACAAEAAAARAAIABwACAAEAAAACAAIABwAAAAEAAAACAAMABwAAAAEAAAACAAQABwAAAAEAAAACAAUABwAAAAEAAAACAAYABwAAAAEAAAACAAcABwAAAAEAAAACAAgABwAAAAEAAAAFAAgABwABAAEAAAAEAAgABwABAAEAAAADAAgABwABAAEAAAADAAcABwABAAEAAAAEAAcABwABAAEAAAAFAAcABwABAAEAAAAFAAYABwABAAEAAAAEAAYABwABAAEAAAADAAYABwABAAEAAAADAAUABwABAAEAAAAEAAUABwABAAEAAAAFAAUABwABAAEAAAAFAAQABwABAAEAAAAEAAQABwABAAEAAAADAAQABwABAAEAAAADAAMABwABAAEAAAAEAAMABwABAAEAAAAFAAMABwABAAEAAAAFAAIABwABAAEAAAAEAAIABwABAAEAAAADAAIABwABAAEAAAAOAAIABwABAAEAAAAPAAIABwABAAEAAAAQAAMABwABAAEAAAAQAAQABwABAAEAAAAPAAQABwABAAEAAAAOAAQABwABAAEAAAAOAAMABwABAAEAAAAPAAMABwABAAEAAAAQAAIABwABAAEAAAAQAAUABwABAAEAAAAQAAYABwABAAEAAAAQAAcABwABAAEAAAAQAAgABwABAAEAAAAPAAgABwABAAEAAAAPAAcABwABAAEAAAAPAAYABwABAAEAAAAPAAUABwABAAEAAAAOAAcABwABAAEAAAAOAAgABwABAAEAAAAOAAYABwABAAEAAAAOAAUABwABAAEAAAA=")
+tile_map_data = PackedByteArray("AAAHAAIAAgABAAAAAAAIAAIAAgABAAAAAAAJAAIAAgABAAAAAAAKAAIAAgABAAAAAAALAAIAAgABAAAAAAAMAAIAAgABAAAAAAANAAIAAgABAAAAAAAGAAIAAgABAAAAAAAGAAMAAgABAAEAAAAGAAQAAgABAAEAAAAGAAUAAgABAAEAAAAGAAYAAgABAAIAAAAIAAcABwABAAEAAAAJAAcABwABAAEAAAAKAAcABwABAAEAAAALAAcABwABAAEAAAAMAAcABwABAAEAAAANAAcABwABAAEAAAANAAYAAgABAAIAAAANAAUAAgABAAEAAAANAAQAAgABAAEAAAANAAMAAgABAAEAAAAMAAMAAgABAAEAAAALAAMAAgABAAEAAAAKAAMAAgABAAEAAAAJAAMAAgABAAEAAAAIAAMAAgABAAEAAAAHAAMAAgABAAEAAAAHAAQAAgABAAEAAAAIAAQAAgABAAEAAAAJAAQAAgABAAEAAAAKAAQAAgABAAEAAAALAAQAAgABAAEAAAAMAAQAAgABAAEAAAAMAAUAAgABAAEAAAALAAUAAgABAAEAAAAKAAUAAgABAAEAAAAJAAUAAgABAAEAAAAIAAUAAgABAAEAAAAHAAUAAgABAAEAAAAHAAYAAgABAAIAAAAIAAYAAgABAAIAAAAJAAYAAgABAAIAAAAKAAYAAgABAAIAAAALAAYAAgABAAIAAAAMAAYAAgABAAIAAAAKAAgABwABAAEAAAAJAAgABwABAAEAAAAIAAgABwABAAEAAAAHAAgABwABAAEAAAAGAAgABwABAAEAAAALAAgABwABAAEAAAAMAAgABwABAAEAAAANAAgABwABAAEAAAAGAAkABwABAAIAAAAHAAkABwABAAIAAAAIAAkABwABAAIAAAAJAAkABwABAAIAAAAKAAkABwABAAIAAAALAAkABwABAAIAAAAMAAkABwABAAIAAAANAAkABwABAAIAAAANAAEABwABAAAAAAAMAAEABwABAAAAAAALAAEABwABAAAAAAAKAAEABwABAAAAAAAJAAEABwABAAAAAAAIAAEABwABAAAAAAAHAAEABwABAAAAAAAGAAEABwABAAAAAAAFAAkABwABAAIAAAAEAAkABwABAAIAAAADAAkABwABAAIAAAAOAAkABwABAAIAAAAPAAkABwABAAIAAAAQAAkABwABAAIAAAAOAAEABwABAAAAAAAPAAEABwABAAAAAAAQAAEABwABAAAAAAAFAAEABwABAAAAAAAEAAEABwABAAAAAAADAAEABwABAAAAAAACAAEABwAAAAAAAAARAAEABwACAAAAAAACAAkABwAAAAIAAAARAAkABwACAAIAAAARAAgABwACAAEAAAARAAcABwACAAEAAAARAAYABwACAAEAAAARAAUABwACAAEAAAARAAQABwACAAEAAAARAAMABwACAAEAAAARAAIABwACAAEAAAACAAIABwAAAAEAAAACAAMABwAAAAEAAAACAAQABwAAAAEAAAACAAUABwAAAAEAAAACAAYABwAAAAEAAAACAAcABwAAAAEAAAACAAgABwAAAAEAAAAFAAgABwABAAEAAAAEAAgABwABAAEAAAADAAgABwABAAEAAAADAAcABwABAAEAAAAFAAYAAgABAAIAAAAEAAYAAgAAAAIAAAADAAYABwABAAEAAAADAAUABwABAAEAAAAEAAUAAgAAAAEAAAAFAAUAAgABAAEAAAAFAAQAAgABAAEAAAAEAAQAAgAAAAEAAAADAAQABwABAAEAAAADAAMABwABAAEAAAAEAAMAAgAAAAEAAAAFAAMAAgABAAEAAAAFAAIAAgABAAAAAAAEAAIAAgAAAAAAAAADAAIABwABAAEAAAAOAAIAAgACAAAAAAAPAAIABwABAAEAAAAQAAMABwABAAEAAAAQAAQABwABAAEAAAAPAAQABwABAAEAAAAOAAQAAgACAAEAAAAOAAMAAgACAAEAAAAPAAMABwABAAEAAAAQAAIABwABAAEAAAAQAAUABwABAAEAAAAQAAYABwABAAEAAAAQAAcABwABAAEAAAAQAAgABwABAAEAAAAPAAgABwABAAEAAAAPAAcABwABAAEAAAAPAAYABwABAAEAAAAPAAUABwABAAEAAAAOAAcABwABAAEAAAAOAAgABwABAAEAAAAOAAYAAgACAAIAAAAOAAUAAgACAAEAAAAEAAcABwABAAEAAAAFAAcABwABAAEAAAAGAAcABwABAAEAAAAHAAcABwABAAEAAAA=")
 tile_set = ExtResource("2_lochr")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ColorRect" unique_id=188651795]
 layout_mode = 0
-offset_left = 38.0
+offset_left = 33.0
 offset_top = 127.0
-offset_right = 281.0
+offset_right = 286.0
 offset_bottom = 159.0
-theme_override_constants/separation = 40
+theme_override_constants/separation = 16
 alignment = 1
 
 [node name="Button_Sair" type="Button" parent="ColorRect/HBoxContainer" unique_id=2069142467]
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(0.9490196, 0.9490196, 0, 1)
 theme_override_fonts/font = ExtResource("3_rkqe1")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 12
 text = "Sair do Jogo"
+flat = true
+
+[node name="Button_Comparar" type="Button" parent="ColorRect/HBoxContainer" unique_id=1385328046]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.9490196, 0.9490196, 0, 1)
+theme_override_fonts/font = ExtResource("3_rkqe1")
+theme_override_font_sizes/font_size = 12
+text = "Comparar"
 flat = true
 
 [node name="Button_Reiniciar" type="Button" parent="ColorRect/HBoxContainer" unique_id=1823242952]
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(0.9490196, 0.9490196, 0, 1)
 theme_override_fonts/font = ExtResource("3_rkqe1")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 12
 text = "Reiniciar"
 flat = true
 
+[node name="Tabela_Resultados" type="Node2D" parent="ColorRect" unique_id=1805144486]
+script = ExtResource("4_lochr")
+
+[node name="Energia" type="BoxContainer" parent="ColorRect/Tabela_Resultados" unique_id=1098280827]
+offset_left = 50.0
+offset_top = 41.0
+offset_right = 60.0
+offset_bottom = 103.0
+theme_override_constants/separation = 8
+alignment = 1
+vertical = true
+
+[node name="y1" type="Label" parent="ColorRect/Tabela_Resultados/Energia" unique_id=828818865]
+custom_minimum_size = Vector2(10, 0)
+custom_maximum_size = Vector2(10, -1)
+layout_mode = 2
+text = "40"
+label_settings = SubResource("LabelSettings_f6saj")
+horizontal_alignment = 1
+
+[node name="y2" type="Label" parent="ColorRect/Tabela_Resultados/Energia" unique_id=255100459]
+custom_minimum_size = Vector2(10, 0)
+custom_maximum_size = Vector2(10, -1)
+layout_mode = 2
+text = "5"
+label_settings = SubResource("LabelSettings_f6saj")
+horizontal_alignment = 1
+
+[node name="y3" type="Label" parent="ColorRect/Tabela_Resultados/Energia" unique_id=1495073924]
+custom_minimum_size = Vector2(10, 0)
+custom_maximum_size = Vector2(10, -1)
+layout_mode = 2
+text = "40"
+label_settings = SubResource("LabelSettings_f6saj")
+horizontal_alignment = 1
+
+[node name="y4" type="Label" parent="ColorRect/Tabela_Resultados/Energia" unique_id=973847181]
+custom_minimum_size = Vector2(10, 0)
+custom_maximum_size = Vector2(10, -1)
+layout_mode = 2
+text = "40"
+label_settings = SubResource("LabelSettings_f6saj")
+horizontal_alignment = 1
+
+[node name="Passos" type="BoxContainer" parent="ColorRect/Tabela_Resultados" unique_id=2120088502]
+offset_left = 84.0
+offset_top = 113.0
+offset_right = 243.0
+offset_bottom = 121.0
+theme_override_constants/separation = 22
+
+[node name="x1" type="Label" parent="ColorRect/Tabela_Resultados/Passos" unique_id=119862153]
+custom_minimum_size = Vector2(10, 0)
+custom_maximum_size = Vector2(10, -1)
+layout_mode = 2
+text = "1"
+label_settings = SubResource("LabelSettings_p8o1d")
+horizontal_alignment = 1
+
+[node name="x3" type="Label" parent="ColorRect/Tabela_Resultados/Passos" unique_id=155813831]
+custom_minimum_size = Vector2(10, 0)
+custom_maximum_size = Vector2(10, -1)
+layout_mode = 2
+text = "3"
+label_settings = SubResource("LabelSettings_p8o1d")
+horizontal_alignment = 1
+
+[node name="x5" type="Label" parent="ColorRect/Tabela_Resultados/Passos" unique_id=1436341382]
+custom_minimum_size = Vector2(10, 0)
+custom_maximum_size = Vector2(10, -1)
+layout_mode = 2
+text = "5"
+label_settings = SubResource("LabelSettings_p8o1d")
+horizontal_alignment = 1
+
+[node name="x7" type="Label" parent="ColorRect/Tabela_Resultados/Passos" unique_id=205419572]
+custom_minimum_size = Vector2(10, 0)
+custom_maximum_size = Vector2(10, -1)
+layout_mode = 2
+text = "7"
+label_settings = SubResource("LabelSettings_p8o1d")
+horizontal_alignment = 1
+
+[node name="x9" type="Label" parent="ColorRect/Tabela_Resultados/Passos" unique_id=40628998]
+custom_minimum_size = Vector2(10, 0)
+custom_maximum_size = Vector2(10, -1)
+layout_mode = 2
+text = "9"
+label_settings = SubResource("LabelSettings_p8o1d")
+horizontal_alignment = 1
+
 [connection signal="pressed" from="ColorRect/HBoxContainer/Button_Sair" to="." method="_on_button_sair_pressed"]
+[connection signal="pressed" from="ColorRect/HBoxContainer/Button_Comparar" to="." method="_on_button_comparar_pressed"]
 [connection signal="pressed" from="ColorRect/HBoxContainer/Button_Reiniciar" to="." method="_on_button_reiniciar_pressed"]
