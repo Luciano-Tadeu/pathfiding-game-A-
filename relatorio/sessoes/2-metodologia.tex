@@ -9,12 +9,12 @@ O ambiente do jogo é uma grade, implementada como uma matriz bidimensional $6\t
 Cada célula da grade corresponde a um estado, que armazena a posição $(x, y)$, com movimentação de célula em célula (acima, abaixo, esquerda e direita).
 O custo de cada passo é o ``Custo de Energia'' da célula onde entra (Grama $1$, Morro $2$, Água $3$), na Tabela \ref{tab:custo_enegia}. A fórmula de somatório do ``Custo de Energia'' é
 \begin{equation}\sum_{i = 0}^{k}  c(v_i) \end{equation} onde $v_0$ é a entrada, $v_k$ é a saída e $c(v_i)$ é o custo de cada célula do caminho.
-A entrada é a célula $(0,5)$, onde A* começa, e a saída é a célula $(5,0)$.
+A entrada é a célula $(0,5)$, onde o A* começa, e a saída é a célula $(5,0)$.
 
 
 
 \section{A Definição}
-Foi implementado o estado do jogo para o núcleo do algoritmo A* (A-Estrela). Foram definidas as seguintes variáveis:
+Foi implementado o estado do jogo para o núcleo do algoritmo A* (A-Estrela). Foram definidas as seguintes variáveis, como na Figura \ref{fig:code_estado}:
 
 \begin{itemize}
     \item \textbf{Pai / predecessor $\boldsymbol{\pi}$:} guarda uma referência ao estado para reconstruir o caminho do estado de saída de volta até o estado de entrada;
@@ -32,4 +32,7 @@ Foi implementado o estado do jogo para o núcleo do algoritmo A* (A-Estrela). Fo
     \fonte{Elaborado pelos autores (2026).}
 \end{figure}
 
-
+\section{A Aplicação da Heurística}
+A heurística escolhida é a distâcia de Manhattan no algoritmo A*, a soma das distâncias da posição até a saída. O movimento é proibido ao longo de diagonais, então a distância contada é a soma das horizonais e verticais:
+\begin{equation} h(v) =  |x_s - x_v| + |y_s - y_v| \end{equation}
+onde $(x_v,y_v)$ é a posição do estado até $(x_s,y_s)$ é a posição  do estado de saída. Essa heurística é otimista \cite[seção 3.6]{ia2013}.
