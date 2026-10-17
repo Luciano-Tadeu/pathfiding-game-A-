@@ -4,8 +4,12 @@ extends CanvasLayer
 var altura_ecra: float
 var animando: bool = false
 
+# SoundFX
+@onready var musica_fundo = $"../MusicaPrincipal"
+
 # O menu começa invisível
 func _ready():
+	musica_fundo.volume_db = -10
 	hide()
 	altura_ecra = get_viewport().get_visible_rect().size.y
 
@@ -19,6 +23,7 @@ func alternar_pausa():
 	var esta_pausado = get_tree().paused
 	
 	if not esta_pausado:
+		musica_fundo.volume_db = -20
 		get_tree().paused = true
 		show()
 		
@@ -32,7 +37,7 @@ func alternar_pausa():
 		animando = false
 		
 	else:
-
+		musica_fundo.volume_db = -10
 		var tween = create_tween()
 		tween.tween_property(self, "offset:y", altura_ecra, 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
 		

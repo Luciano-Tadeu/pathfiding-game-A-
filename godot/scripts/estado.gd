@@ -10,6 +10,10 @@ var f: int: ## prioridade (f(v) = g(v) + h(v))
 	get():
 		return g + h
 
+func _init(p: Estado, pos: Vector2i) -> void:
+	pai = p
+	posicao = pos
+
 func acoes(matriz: Array) -> Array[Vector2i]:
 	var _adj: Array[Vector2i] = [Vector2i(0, -1), Vector2i(0, 1), Vector2i(-1, 0), Vector2i(1, 0)]
 	var res: Array[Vector2i] = []
@@ -22,6 +26,9 @@ func acoes(matriz: Array) -> Array[Vector2i]:
 			res.append(nova_pos)
 
 	return res
+
+func manhattan(pos: Vector2i, obj: Vector2i) -> int:
+	return abs(obj.x - pos.x) + abs(obj.y - pos.y)
 
 ## Mostrar no print()
 func _to_string() -> String:
