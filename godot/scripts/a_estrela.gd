@@ -42,7 +42,7 @@ static func astar(matriz: Array, entrada := Vector2i(0, 5), saida := Vector2i(5,
 			stats["tempo_computacao"] = stats["tempo_fim"] - stats["tempo_inicio"]
 			return {"estado": v, "stats": stats}
 
-		for u in v.acoes(matriz):
+		for u in v.vizinhos(matriz):
 			var novo_g: int = g_values[v.posicao] + matriz[u.y][u.x] # Custo do novo caminho (g(n))
 
 			if u not in g_values or novo_g < g_values[u]:
