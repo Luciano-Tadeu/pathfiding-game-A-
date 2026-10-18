@@ -15,10 +15,10 @@ func _init(p: Estado, pos: Vector2i) -> void:
 	posicao = pos
 
 func acoes(matriz: Array) -> Array[Vector2i]:
-	var _adj: Array[Vector2i] = [Vector2i(0, -1), Vector2i(0, 1), Vector2i(-1, 0), Vector2i(1, 0)]
+	var adj: Array[Vector2i] = [Vector2i(0, -1), Vector2i(0, 1), Vector2i(-1, 0), Vector2i(1, 0)]
 	var res: Array[Vector2i] = []
 	
-	for direcao in _adj:
+	for direcao in adj:
 		var nova_pos := posicao + direcao
 		
 		if (nova_pos.x >= 0 and nova_pos.x < matriz[0].size()) \

@@ -33,6 +33,9 @@ Foi implementado o estado do jogo para o núcleo do algoritmo A* (A-Estrela). Fo
 \end{figure}
 
 \section{A Aplicação da Heurística}
-A heurística escolhida é a distâcia de Manhattan no algoritmo A*, a soma das distâncias da posição até a saída. O movimento é proibido ao longo de diagonais, então a distância contada é a soma das horizonais e verticais:
+A heurística escolhida é a distância de Manhattan no algoritmo A*, a soma das distâncias da posição até a saída. O movimento é proibido ao longo de diagonais, então a distância contada é a soma das horizontais e verticais:
 \begin{equation} h(v) =  |x_s - x_v| + |y_s - y_v| \end{equation}
-onde $(x_v,y_v)$ é a posição do estado até $(x_s,y_s)$ é a posição  do estado de saída. Essa heurística é otimista \cite[seção 3.6]{ia2013}.
+onde $(x_v,y_v)$ é a posição do estado $v$ e $(x_s,y_s)$ é a posição do estado de saída. Essa heurística é otimista \cite[seção 3.6]{ia2013}.
+
+\section{A* (A-Estrela)}
+
