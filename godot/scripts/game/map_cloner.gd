@@ -9,9 +9,8 @@ func _ready() -> void:
 	mapa = GameData.mapa;
 	cloneMap(areaPlayer);
 	cloneMap(areaAstar);
-	
 
-func cloneMap(destiny: Vector2i, ) -> void:
+func cloneMap(destiny: Vector2i) -> void:
 	for tile in mapa:
 		set_cell(destiny + tile.pos, tile.source, tile.atlas)
 
