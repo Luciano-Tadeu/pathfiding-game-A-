@@ -13,7 +13,7 @@ A entrada é a célula $(0,5)$, onde o A* começa, e a saída é a célula $(5,0
 
 
 
-\section{A Definição}
+\section{Definição}
 Foi implementado o estado do jogo para o núcleo do algoritmo A* (A-Estrela). Foram definidas as seguintes variáveis, como na Figura \ref{fig:code_estado}:
 
 \begin{itemize}
@@ -28,14 +28,47 @@ Foi implementado o estado do jogo para o núcleo do algoritmo A* (A-Estrela). Fo
     \centering
     \caption{Classe Estado em \textit{GDScript}}
     \label{fig:code_estado}
-    \includegraphics[width=\textwidth]{figuras/scripts/code_estado.png}
+    \setlength{\fboxsep}{0pt}
+    \fbox{\includegraphics[width=0.99\textwidth]{figuras/scripts/code_estado.png}}
     \fonte{Elaborado pelos autores (2026).}
 \end{figure}
 
-\section{A Aplicação da Heurística}
+\section{Aplicação da Heurística}
 A heurística escolhida é a distância de Manhattan no algoritmo A*, a soma das distâncias da posição até a saída. O movimento é proibido ao longo de diagonais, então a distância contada é a soma das horizontais e verticais:
 \begin{equation} h(v) =  |x_s - x_v| + |y_s - y_v| \end{equation}
 onde $(x_v,y_v)$ é a posição do estado $v$ e $(x_s,y_s)$ é a posição do estado de saída. Essa heurística é otimista \cite[seção 3.6]{ia2013}.
 
-\section{A* (A-Estrela)}
+\newpage
 
+\section{A* (A-Estrela)}
+O algoritmo foi adaptado, conforne a Figura \ref{fig:code_aestrela}, para que o custo inicial $g$ do estado de entrada corresponda ao valor da célula de partida, conforme as regras do jogo:
+
+\begin{figure}[h]
+    \centering
+    \caption{Função A* sem cálculo de estatísticas em \textit{GDScript}}
+    \label{fig:code_aestrela}
+    \setlength{\fboxsep}{0pt}
+    \fbox{\includegraphics[width=0.99\textwidth]{figuras/scripts/code_aestrela_sem_stats.png}}
+    \fonte{Elaborado pelos autores e adaptado do Laboratório 3 da disciplina (2026).}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Fila de prioridade:} foi implementada a fila de prioridade, pois a linguagem GDScript (Godot) não possui uma estrutura pronta. Ela possui as funções enfileirar, que armazena o estado na posição certa pela prioridade $f(v)$, e desenfileirar, que retira o primeiro da fila, o de menor $f(v)$. Na busca A*, utiliza-se $f$ em vez de $g$ para ordenar a fila de prioridade \cite[seção 3.5]{ia2013}.
+    \item \textbf{Início:} o estado de entrada, com $g$ igual ao custo da célula, $h$ pela distância de Manhattan, e entra na fila.
+    \item \textbf{Repetição:} enquanto a fila não está vazia, retira o estado de menor $f$.
+          \begin{itemize}
+              \item Se já foi visitado, descarta.
+              \item Se é a saída, termina.
+          \end{itemize}
+    \item \textbf{Vizinhos:} para cada vizinho $u$, o novo custo é $g(v) + c(u)$. Se for menor que o custo já conhecido, guarda o novo custo e coloca $u$ na fila.
+    \item \textbf{Reconstruir caminho:} a função recebe o estado final e reconstrói caminho pelo vetor de pai (predecessor $\pi$). Um laço percorre os estados da saída até a entrada, e a função retorna o caminho invertido, conforme a Figura \ref{fig:code_reconstruir_caminho}.
+\end{itemize}
+
+\begin{figure}[h]
+    \centering
+    \caption{Função Reconstruir Caminho em \textit{GDScript}}
+    \label{fig:code_reconstruir_caminho}
+    \setlength{\fboxsep}{0pt}
+    \fbox{\includegraphics[width=0.75\textwidth]{figuras/scripts/code_reconstruir_caminho.png}}
+    \fonte{Elaborado pelos autores (2026).}
+\end{figure}
