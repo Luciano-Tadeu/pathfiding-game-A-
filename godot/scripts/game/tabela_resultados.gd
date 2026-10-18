@@ -78,7 +78,7 @@ func initiate() -> void:
 		#print(playerSteps);
 		#print(playerEnergy);
 			
-		_draw();
+		queue_redraw();
 		animateScore(0);
 		animateScore(1);
 
