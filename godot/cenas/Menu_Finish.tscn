@@ -3,6 +3,18 @@
 [ext_resource type="Script" uid="uid://dn45w2pff7vos" path="res://scripts/game/menu_finish.gd" id="1_mwafi"]
 [ext_resource type="TileSet" uid="uid://c36x8j5r76kbd" path="res://cenas/tileset.tres" id="2_lochr"]
 [ext_resource type="FontFile" uid="uid://bp70v1mryrko0" path="res://Sprout Lands - Sprites - Basic pack/Sprout Lands - Sprites - Basic pack/Font/Pixuf.ttf" id="3_rkqe1"]
+[ext_resource type="Script" uid="uid://cpc1rt35dvt5q" path="res://scripts/game/tabela_resultados.gd" id="4_lochr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_f6saj"]
+font = ExtResource("3_rkqe1")
+font_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_agdbw"]
+bg_color = Color(0.14117648, 0.14117648, 0.14117648, 0.8117647)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
 
 [node name="MenuFinish" type="CanvasLayer" unique_id=1409206553]
 process_mode = 3
@@ -14,33 +26,291 @@ offset_bottom = 180.0
 color = Color(0, 0, 0, 0.78431374)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="ColorRect" unique_id=979112588]
-tile_map_data = PackedByteArray("AAAHAAIABwABAAEAAAAIAAIABwABAAEAAAAJAAIABwABAAEAAAAKAAIABwABAAEAAAALAAIABwABAAEAAAAMAAIABwABAAEAAAANAAIABwABAAEAAAAGAAIABwABAAEAAAAGAAMABwABAAEAAAAGAAQABwABAAEAAAAGAAUABwABAAEAAAAGAAYABwABAAEAAAAGAAcABwABAAEAAAAHAAcABwABAAEAAAAIAAcABwABAAEAAAAJAAcABwABAAEAAAAKAAcABwABAAEAAAALAAcABwABAAEAAAAMAAcABwABAAEAAAANAAcABwABAAEAAAANAAYABwABAAEAAAANAAUABwABAAEAAAANAAQABwABAAEAAAANAAMABwABAAEAAAAMAAMABwABAAEAAAALAAMABwABAAEAAAAKAAMABwABAAEAAAAJAAMABwABAAEAAAAIAAMABwABAAEAAAAHAAMABwABAAEAAAAHAAQABwABAAEAAAAIAAQABwABAAEAAAAJAAQABwABAAEAAAAKAAQABwABAAEAAAALAAQABwABAAEAAAAMAAQABwABAAEAAAAMAAUABwABAAEAAAALAAUABwABAAEAAAAKAAUABwABAAEAAAAJAAUABwABAAEAAAAIAAUABwABAAEAAAAHAAUABwABAAEAAAAHAAYABwABAAEAAAAIAAYABwABAAEAAAAJAAYABwABAAEAAAAKAAYABwABAAEAAAALAAYABwABAAEAAAAMAAYABwABAAEAAAAKAAgABwABAAEAAAAJAAgABwABAAEAAAAIAAgABwABAAEAAAAHAAgABwABAAEAAAAGAAgABwABAAEAAAALAAgABwABAAEAAAAMAAgABwABAAEAAAANAAgABwABAAEAAAAGAAkABwABAAIAAAAHAAkABwABAAIAAAAIAAkABwABAAIAAAAJAAkABwABAAIAAAAKAAkABwABAAIAAAALAAkABwABAAIAAAAMAAkABwABAAIAAAANAAkABwABAAIAAAANAAEABwABAAAAAAAMAAEABwABAAAAAAALAAEABwABAAAAAAAKAAEABwABAAAAAAAJAAEABwABAAAAAAAIAAEABwABAAAAAAAHAAEABwABAAAAAAAGAAEABwABAAAAAAAFAAkABwABAAIAAAAEAAkABwABAAIAAAADAAkABwABAAIAAAAOAAkABwABAAIAAAAPAAkABwABAAIAAAAQAAkABwABAAIAAAAOAAEABwABAAAAAAAPAAEABwABAAAAAAAQAAEABwABAAAAAAAFAAEABwABAAAAAAAEAAEABwABAAAAAAADAAEABwABAAAAAAACAAEABwAAAAAAAAARAAEABwACAAAAAAACAAkABwAAAAIAAAARAAkABwACAAIAAAARAAgABwACAAEAAAARAAcABwACAAEAAAARAAYABwACAAEAAAARAAUABwACAAEAAAARAAQABwACAAEAAAARAAMABwACAAEAAAARAAIABwACAAEAAAACAAIABwAAAAEAAAACAAMABwAAAAEAAAACAAQABwAAAAEAAAACAAUABwAAAAEAAAACAAYABwAAAAEAAAACAAcABwAAAAEAAAACAAgABwAAAAEAAAAFAAgABwABAAEAAAAEAAgABwABAAEAAAADAAgABwABAAEAAAADAAcABwABAAEAAAAEAAcABwABAAEAAAAFAAcABwABAAEAAAAFAAYABwABAAEAAAAEAAYABwABAAEAAAADAAYABwABAAEAAAADAAUABwABAAEAAAAEAAUABwABAAEAAAAFAAUABwABAAEAAAAFAAQABwABAAEAAAAEAAQABwABAAEAAAADAAQABwABAAEAAAADAAMABwABAAEAAAAEAAMABwABAAEAAAAFAAMABwABAAEAAAAFAAIABwABAAEAAAAEAAIABwABAAEAAAADAAIABwABAAEAAAAOAAIABwABAAEAAAAPAAIABwABAAEAAAAQAAMABwABAAEAAAAQAAQABwABAAEAAAAPAAQABwABAAEAAAAOAAQABwABAAEAAAAOAAMABwABAAEAAAAPAAMABwABAAEAAAAQAAIABwABAAEAAAAQAAUABwABAAEAAAAQAAYABwABAAEAAAAQAAcABwABAAEAAAAQAAgABwABAAEAAAAPAAgABwABAAEAAAAPAAcABwABAAEAAAAPAAYABwABAAEAAAAPAAUABwABAAEAAAAOAAcABwABAAEAAAAOAAgABwABAAEAAAAOAAYABwABAAEAAAAOAAUABwABAAEAAAA=")
+tile_map_data = PackedByteArray("AAAHAAIABwABAAEAAAAIAAIABwABAAEAAAAJAAIABwABAAEAAAAKAAIABwABAAEAAAALAAIABwABAAEAAAAMAAIABwABAAEAAAANAAIABwABAAEAAAAGAAIABwABAAEAAAAGAAMABwABAAEAAAAGAAQABwABAAEAAAAGAAUABwABAAEAAAAGAAYABwABAAEAAAAIAAcABwABAAEAAAAJAAcABwABAAEAAAAKAAcABwABAAEAAAALAAcABwABAAEAAAAMAAcABwABAAEAAAANAAcABwABAAEAAAANAAYABwABAAEAAAANAAUABwABAAEAAAANAAQABwABAAEAAAANAAMABwABAAEAAAAMAAMABwABAAEAAAALAAMABwABAAEAAAAKAAMABwABAAEAAAAJAAMABwABAAEAAAAIAAMABwABAAEAAAAHAAMABwABAAEAAAAHAAQABwABAAEAAAAIAAQABwABAAEAAAAJAAQABwABAAEAAAAKAAQABwABAAEAAAALAAQABwABAAEAAAAMAAQABwABAAEAAAAMAAUABwABAAEAAAALAAUABwABAAEAAAAKAAUABwABAAEAAAAJAAUABwABAAEAAAAIAAUABwABAAEAAAAHAAUABwABAAEAAAAHAAYABwABAAEAAAAIAAYABwABAAEAAAAJAAYABwABAAEAAAAKAAYABwABAAEAAAALAAYABwABAAEAAAAMAAYABwABAAEAAAAKAAgABwABAAEAAAAJAAgABwABAAEAAAAIAAgABwABAAEAAAAHAAgABwABAAEAAAAGAAgABwABAAEAAAALAAgABwABAAEAAAAMAAgABwABAAEAAAANAAgABwABAAEAAAAGAAkABwABAAIAAAAHAAkABwABAAIAAAAIAAkABwABAAIAAAAJAAkABwABAAIAAAAKAAkABwABAAIAAAALAAkABwABAAIAAAAMAAkABwABAAIAAAANAAkABwABAAIAAAANAAEABwABAAAAAAAMAAEABwABAAAAAAALAAEABwABAAAAAAAKAAEABwABAAAAAAAJAAEABwABAAAAAAAIAAEABwABAAAAAAAHAAEABwABAAAAAAAGAAEABwABAAAAAAAFAAkABwABAAIAAAAEAAkABwABAAIAAAADAAkABwABAAIAAAAOAAkABwABAAIAAAAPAAkABwABAAIAAAAQAAkABwABAAIAAAAOAAEABwABAAAAAAAPAAEABwABAAAAAAAQAAEABwABAAAAAAAFAAEABwABAAAAAAAEAAEABwABAAAAAAADAAEABwABAAAAAAACAAEABwAAAAAAAAARAAEABwACAAAAAAACAAkABwAAAAIAAAARAAkABwACAAIAAAARAAgABwACAAEAAAARAAcABwACAAEAAAARAAYABwACAAEAAAARAAUABwACAAEAAAARAAQABwACAAEAAAARAAMABwACAAEAAAARAAIABwACAAEAAAACAAIABwAAAAEAAAACAAMABwAAAAEAAAACAAQABwAAAAEAAAACAAUABwAAAAEAAAACAAYABwAAAAEAAAACAAcABwAAAAEAAAACAAgABwAAAAEAAAAFAAgABwABAAEAAAAEAAgABwABAAEAAAADAAgABwABAAEAAAADAAcABwABAAEAAAAFAAYABwABAAEAAAAEAAYABwABAAEAAAADAAYABwABAAEAAAADAAUABwABAAEAAAAEAAUABwABAAEAAAAFAAUABwABAAEAAAAFAAQABwABAAEAAAAEAAQABwABAAEAAAADAAQABwABAAEAAAADAAMABwABAAEAAAAEAAMABwABAAEAAAAFAAMABwABAAEAAAAFAAIABwABAAEAAAAEAAIABwABAAEAAAADAAIABwABAAEAAAAOAAIABwABAAEAAAAPAAIABwABAAEAAAAQAAMABwABAAEAAAAQAAQABwABAAEAAAAPAAQABwABAAEAAAAOAAQABwABAAEAAAAOAAMABwABAAEAAAAPAAMABwABAAEAAAAQAAIABwABAAEAAAAQAAUABwABAAEAAAAQAAYABwABAAEAAAAQAAcABwABAAEAAAAQAAgABwABAAEAAAAPAAgABwABAAEAAAAPAAcABwABAAEAAAAPAAYABwABAAEAAAAPAAUABwABAAEAAAAOAAcABwABAAEAAAAOAAgABwABAAEAAAAOAAYABwABAAEAAAAOAAUABwABAAEAAAAEAAcABwABAAEAAAAFAAcABwABAAEAAAAGAAcABwABAAEAAAAHAAcABwABAAEAAAA=")
 tile_set = ExtResource("2_lochr")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ColorRect" unique_id=188651795]
 layout_mode = 0
-offset_left = 38.0
+offset_left = 33.0
 offset_top = 127.0
-offset_right = 281.0
+offset_right = 286.0
 offset_bottom = 159.0
-theme_override_constants/separation = 40
+theme_override_constants/separation = 16
 alignment = 1
 
 [node name="Button_Sair" type="Button" parent="ColorRect/HBoxContainer" unique_id=2069142467]
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(0.9490196, 0.9490196, 0, 1)
 theme_override_fonts/font = ExtResource("3_rkqe1")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 12
 text = "Sair do Jogo"
+flat = true
+
+[node name="Button_Comparar" type="Button" parent="ColorRect/HBoxContainer" unique_id=1385328046]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.9490196, 0.9490196, 0, 1)
+theme_override_fonts/font = ExtResource("3_rkqe1")
+theme_override_font_sizes/font_size = 12
+text = "Comparar"
 flat = true
 
 [node name="Button_Reiniciar" type="Button" parent="ColorRect/HBoxContainer" unique_id=1823242952]
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(0.9490196, 0.9490196, 0, 1)
 theme_override_fonts/font = ExtResource("3_rkqe1")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 12
 text = "Reiniciar"
 flat = true
 
+[node name="Tabela_Resultados" type="Node2D" parent="ColorRect" unique_id=1805144486]
+position = Vector2(16, 0)
+script = ExtResource("4_lochr")
+
+[node name="Energia" type="BoxContainer" parent="ColorRect/Tabela_Resultados" unique_id=1098280827]
+offset_left = 50.0
+offset_top = 41.0
+offset_right = 60.0
+offset_bottom = 103.0
+theme_override_constants/separation = 8
+alignment = 1
+vertical = true
+metadata/_edit_use_anchors_ = true
+
+[node name="y1" type="Label" parent="ColorRect/Tabela_Resultados/Energia" unique_id=828818865]
+custom_minimum_size = Vector2(10, 0)
+custom_maximum_size = Vector2(10, -1)
+layout_mode = 2
+text = "40"
+label_settings = SubResource("LabelSettings_f6saj")
+horizontal_alignment = 1
+
+[node name="y2" type="Label" parent="ColorRect/Tabela_Resultados/Energia" unique_id=255100459]
+custom_minimum_size = Vector2(10, 0)
+custom_maximum_size = Vector2(10, -1)
+layout_mode = 2
+text = "5"
+label_settings = SubResource("LabelSettings_f6saj")
+horizontal_alignment = 1
+
+[node name="y3" type="Label" parent="ColorRect/Tabela_Resultados/Energia" unique_id=1495073924]
+custom_minimum_size = Vector2(10, 0)
+custom_maximum_size = Vector2(10, -1)
+layout_mode = 2
+text = "40"
+label_settings = SubResource("LabelSettings_f6saj")
+horizontal_alignment = 1
+
+[node name="y4" type="Label" parent="ColorRect/Tabela_Resultados/Energia" unique_id=973847181]
+custom_minimum_size = Vector2(10, 0)
+custom_maximum_size = Vector2(10, -1)
+layout_mode = 2
+text = "40"
+label_settings = SubResource("LabelSettings_f6saj")
+horizontal_alignment = 1
+
+[node name="Pontos" type="BoxContainer" parent="ColorRect/Tabela_Resultados" unique_id=616639704]
+propagate_maximum_size = false
+offset_left = 65.0
+offset_top = 48.0
+offset_right = 67.0
+offset_bottom = 100.0
+theme_override_constants/separation = 15
+vertical = true
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect/Tabela_Resultados/Pontos" unique_id=1386218563]
+custom_minimum_size = Vector2(2, 1)
+layout_mode = 2
+
+[node name="ColorRect2" type="ColorRect" parent="ColorRect/Tabela_Resultados/Pontos" unique_id=91497615]
+custom_minimum_size = Vector2(2, 1)
+layout_mode = 2
+
+[node name="ColorRect3" type="ColorRect" parent="ColorRect/Tabela_Resultados/Pontos" unique_id=218910248]
+custom_minimum_size = Vector2(2, 1)
+layout_mode = 2
+
+[node name="ColorRect4" type="ColorRect" parent="ColorRect/Tabela_Resultados/Pontos" unique_id=1354902704]
+custom_minimum_size = Vector2(2, 1)
+layout_mode = 2
+
+[node name="EixoY" type="ColorRect" parent="ColorRect/Tabela_Resultados" unique_id=625196354]
+offset_left = 63.0
+offset_top = 39.0
+offset_right = 65.0
+offset_bottom = 122.0
+metadata/_edit_use_anchors_ = true
+
+[node name="EixoX" type="ColorRect" parent="ColorRect/Tabela_Resultados" unique_id=732938225]
+offset_left = 242.59512
+offset_top = 109.27026
+offset_right = 244.32486
+offset_bottom = 305.8113
+rotation = 1.5707964
+metadata/_edit_use_anchors_ = true
+
+[node name="Legenda" type="Panel" parent="ColorRect/Tabela_Resultados" unique_id=2115368406]
+offset_left = 219.0
+offset_top = 72.0
+offset_right = 243.0
+offset_bottom = 102.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_agdbw")
+
+[node name="x" type="Label" parent="ColorRect/Tabela_Resultados/Legenda" unique_id=542436794]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 31.0
+offset_bottom = 9.0
+theme_override_fonts/font = ExtResource("3_rkqe1")
+theme_override_font_sizes/font_size = 4
+text = "x = Passos"
+
+[node name="x2" type="Label" parent="ColorRect/Tabela_Resultados/Legenda" unique_id=1790079047]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 8.0
+offset_right = 31.0
+offset_bottom = 15.0
+theme_override_fonts/font = ExtResource("3_rkqe1")
+theme_override_font_sizes/font_size = 4
+text = "y = Energia"
+
+[node name="BoxContainer" type="BoxContainer" parent="ColorRect/Tabela_Resultados/Legenda" unique_id=64156759]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 16.0
+offset_right = 28.0
+offset_bottom = 22.0
+theme_override_constants/separation = 2
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect/Tabela_Resultados/Legenda/BoxContainer" unique_id=752014962]
+custom_minimum_size = Vector2(5, 5)
+layout_mode = 2
+size_flags_vertical = 0
+color = Color(1, 0, 0, 1)
+
+[node name="Label" type="Label" parent="ColorRect/Tabela_Resultados/Legenda/BoxContainer" unique_id=436347594]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_rkqe1")
+theme_override_font_sizes/font_size = 4
+text = "Player"
+
+[node name="BoxContainer2" type="BoxContainer" parent="ColorRect/Tabela_Resultados/Legenda" unique_id=1034622769]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 23.0
+offset_right = 28.0
+offset_bottom = 29.0
+theme_override_constants/separation = 2
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect/Tabela_Resultados/Legenda/BoxContainer2" unique_id=1298061443]
+custom_minimum_size = Vector2(5, 5)
+layout_mode = 2
+size_flags_vertical = 0
+color = Color(0.45840496, 0.45840508, 0.4584049, 1)
+
+[node name="Label" type="Label" parent="ColorRect/Tabela_Resultados/Legenda/BoxContainer2" unique_id=1631969983]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_rkqe1")
+theme_override_font_sizes/font_size = 4
+text = "Astar"
+
+[node name="Y" type="Label" parent="ColorRect/Tabela_Resultados" unique_id=1553460890]
+offset_left = 55.0
+offset_top = 23.0
+offset_right = 60.0
+offset_bottom = 33.0
+theme_override_fonts/font = ExtResource("3_rkqe1")
+theme_override_font_sizes/font_size = 9
+text = "y"
+
+[node name="X" type="Label" parent="ColorRect/Tabela_Resultados" unique_id=1593157639]
+offset_left = 251.0
+offset_top = 113.0
+offset_right = 256.0
+offset_bottom = 123.0
+theme_override_fonts/font = ExtResource("3_rkqe1")
+theme_override_font_sizes/font_size = 9
+text = "x"
+
+[node name="SetaX" type="Control" parent="ColorRect/Tabela_Resultados" unique_id=321650209]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 241.0
+offset_top = 104.0
+offset_right = 253.0
+offset_bottom = 116.0
+
+[node name="setinha1" type="Label" parent="ColorRect/Tabela_Resultados/SetaX" unique_id=1957349097]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 2.0
+offset_right = 24.0
+offset_bottom = 17.0
+rotation = 1.5707964
+theme_override_fonts/font = ExtResource("3_rkqe1")
+theme_override_font_sizes/font_size = 11
+text = "/"
+
+[node name="setinha2" type="Label" parent="ColorRect/Tabela_Resultados/SetaX" unique_id=1571691471]
+layout_mode = 0
+offset_left = 2.0
+offset_right = 13.0
+offset_bottom = 15.0
+theme_override_fonts/font = ExtResource("3_rkqe1")
+theme_override_font_sizes/font_size = 11
+text = "I"
+
+[node name="setinha3" type="Label" parent="ColorRect/Tabela_Resultados/SetaX" unique_id=1652227705]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 6.0
+offset_right = 24.0
+offset_bottom = 21.0
+rotation = 1.5707964
+theme_override_fonts/font = ExtResource("3_rkqe1")
+theme_override_font_sizes/font_size = 11
+text = "\\"
+
+[node name="SetaY" type="Control" parent="ColorRect/Tabela_Resultados" unique_id=1413783181]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 59.0
+offset_top = 29.0
+offset_right = 69.0
+offset_bottom = 39.0
+
+[node name="setinha4" type="Label" parent="ColorRect/Tabela_Resultados/SetaY" unique_id=1321196183]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 9.0
+offset_right = 22.0
+offset_bottom = 24.0
+rotation = 1.5707964
+theme_override_fonts/font = ExtResource("3_rkqe1")
+theme_override_font_sizes/font_size = 11
+text = "I"
+
+[node name="setinha5" type="Label" parent="ColorRect/Tabela_Resultados/SetaY" unique_id=1444415872]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 12.0
+offset_bottom = 14.0
+theme_override_fonts/font = ExtResource("3_rkqe1")
+theme_override_font_sizes/font_size = 11
+text = "/"
+
+[node name="setinha6" type="Label" parent="ColorRect/Tabela_Resultados/SetaY" unique_id=924331437]
+layout_mode = 0
+offset_left = 5.0
+offset_top = -1.0
+offset_right = 16.0
+offset_bottom = 14.0
+theme_override_fonts/font = ExtResource("3_rkqe1")
+theme_override_font_sizes/font_size = 11
+text = "\\"
+
 [connection signal="pressed" from="ColorRect/HBoxContainer/Button_Sair" to="." method="_on_button_sair_pressed"]
+[connection signal="pressed" from="ColorRect/HBoxContainer/Button_Comparar" to="." method="_on_button_comparar_pressed"]
 [connection signal="pressed" from="ColorRect/HBoxContainer/Button_Reiniciar" to="." method="_on_button_reiniciar_pressed"]
