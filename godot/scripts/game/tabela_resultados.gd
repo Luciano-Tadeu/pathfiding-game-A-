@@ -61,7 +61,7 @@ func initiate() -> void:
 		maxSteps = max(player.caminho_percorrido.size(), botSteps.size()) - 1;
 		maxEnergy = max(playerEnergy.max(), botEnergy.max());
 		
-		print("astar: " + str(botEnergy));
+		#print("astar: " + str(botEnergy));
 
 		scores[0].steps.resize(maxSteps)
 		scores[0].steps.fill(0.0)
@@ -71,12 +71,12 @@ func initiate() -> void:
 		
 		var idxEnergy = 1;
 		for i in energyLabels.get_children():
-			print(i.name);
+			#print(i.name);
 			i.text = str(int((maxEnergy) / float(4) * (5 - idxEnergy)));
 			idxEnergy += 1;
 			
-		print(playerSteps);
-		print(playerEnergy);
+		#print(playerSteps);
+		#print(playerEnergy);
 			
 		_draw();
 		animateScore(0);
