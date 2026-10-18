@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://ddlbuurkm7xv6" path="res://Sprout Lands - Sprites - Basic pack/Sprout Lands - Sprites - Basic pack/Tilesets/Grass.png" id="1_p5vhu"]
 [ext_resource type="Texture2D" uid="uid://dqfek67xti824" path="res://Sprout Lands - Sprites - Basic pack/Sprout Lands - Sprites - Basic pack/Tilesets/Hills.png" id="2_mlaj1"]
 [ext_resource type="Texture2D" uid="uid://bhsxs2affnido" path="res://Sprout Lands - Sprites - Basic pack/Sprout Lands - Sprites - Basic pack/Tilesets/Water.png" id="3_at7el"]
+[ext_resource type="Texture2D" uid="uid://c05ess3i8j1d8" path="res://Sprout Lands - Sprites - Basic pack/Sprout Lands - Sprites - Basic pack/Tilesets/Tabela Grafico.png" id="4_mlaj1"]
 [ext_resource type="Texture2D" uid="uid://han2ps0ux3uk" path="res://Sprout Lands - Sprites - Basic pack/Sprout Lands - Sprites - Basic pack/Tilesets/Wooden House.png" id="4_rylgp"]
 [ext_resource type="Texture2D" uid="uid://chrf27oe111u4" path="res://Sprout Lands - Sprites - Basic pack/Sprout Lands - Sprites - Basic pack/Tilesets/Wooden_House_Roof_Tilset.png" id="5_e257w"]
 [ext_resource type="Texture2D" uid="uid://d4iinqmsk1djv" path="res://Sprout Lands - Sprites - Basic pack/Sprout Lands - Sprites - Basic pack/Tilesets/Wooden_House_Walls_Tilset.png" id="6_bslpc"]
@@ -339,6 +340,18 @@ texture = ExtResource("3_at7el")
 0:0/0 = 0
 0:0/0/custom_data_0 = 3
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_at7el"]
+texture = ExtResource("4_mlaj1")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+2:1/0 = 0
+1:1/0 = 0
+0:1/0 = 0
+0:2/0 = 0
+2:2/0 = 0
+1:2/0 = 0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tfyqd"]
 texture = ExtResource("4_rylgp")
 1:0/0 = 0
@@ -531,3 +544,4 @@ sources/6 = SubResource("TileSetAtlasSource_sl83n")
 sources/7 = SubResource("TileSetAtlasSource_fnnok")
 sources/8 = SubResource("TileSetAtlasSource_nntq6")
 sources/10 = SubResource("TileSetAtlasSource_anr53")
+sources/2 = SubResource("TileSetAtlasSource_at7el")
