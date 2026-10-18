@@ -21,6 +21,8 @@ func _on_button_comparar_pressed() -> void:
 	GameData.mapa = gameplay.get_node("TileMapLayer_Game").mapa.duplicate(true);
 	GameData.player_historico = player.caminho_percorrido.duplicate(true);
 	
+	musica_fundo.volume_db = -10
+	
 	var replay = preload("res://cenas/Replay.tscn").instantiate();
 	
 	gameplay.queue_free();
