@@ -16,9 +16,17 @@ func _ready():
 # Detecta se o jogador apertou a tecla de pausa (ESC por padrão)
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_cancel") and not animando:
+		# Verifica se o jogo está pausado por OUTRO menu (jogo pausado, mas este menu invisível)
+		if get_tree().paused and not visible:
+			return # Ignora o input e deixa o outro menu lidar com ele
+			
+		# Informa à engine que este input já foi processado (evita conflitos com outros scripts)
+		get_viewport().set_input_as_handled()
+		
 		alternar_pausa()
 
 func alternar_pausa():
+	
 	animando = true
 	var esta_pausado = get_tree().paused
 	
