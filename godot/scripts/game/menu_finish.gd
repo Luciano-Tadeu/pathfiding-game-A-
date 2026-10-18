@@ -18,14 +18,15 @@ func _on_button_sair_pressed() -> void:
 func _on_button_comparar_pressed() -> void:
 	var gameplay = $"../Gameplay";
 	
-	GameData.mapa = gameplay.get_node("TileMapLayer_Game").mapa.duplicate(true);
-	GameData.player_historico = player.caminho_percorrido.duplicate(true);
-	
+	if (gameplay):
+		GameData.mapa = gameplay.get_node("TileMapLayer_Game").mapa.duplicate(true);
+		GameData.player_historico = player.caminho_percorrido.duplicate(true);
+		gameplay.queue_free();
+		
 	musica_fundo.volume_db = -10
-	
+	 
 	var replay = preload("res://cenas/Replay.tscn").instantiate();
 	
-	gameplay.queue_free();
 	get_tree().paused = false
 	
 	hide();

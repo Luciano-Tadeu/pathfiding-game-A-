@@ -22,7 +22,7 @@ enum TipoPersonagem {PLAYER, ROBO};
 # Flags de Inicio e Fim
 var started = false
 var finished = false
-signal finish(energy_cost)
+signal finish(tipoPersonagem: TipoPersonagem);
 @export var inicio: Vector2i
 @export var fim: Vector2i
 
@@ -146,7 +146,7 @@ func deslizar_para_novo_bloco():
 	
 	# --- VERIFICAÇÃO DE VITÓRIA ---
 	if posicao_grid == coordenada_saida:
-		finish.emit(energia_gasta)
+		finish.emit(tipoPersonagem)
 
 # Atualizar no painel a Energia Gasta
 func atualizar_painel_energia():
