@@ -7,7 +7,7 @@ As seções a seguir explicam as fórmulas do algoritmo, com base em \citeonline
 \section{Representação do Problema}
 O ambiente do jogo é uma grade, implementada como uma matriz bidimensional $6\times 6$, com $36$ células ou terrenos (malha ou \textit{grid}), como na Figura \ref{fig:gird_game}.
 Cada célula da grade corresponde a um estado, que armazena a posição $(x, y)$, com movimentação de célula em célula (acima, abaixo, esquerda e direita).
-O custo de cada passo é o ``Custo de Energia'' da célula onde entra (Grama $1$, Morro $2$, Água $3$), na Tabela \ref{tab:custo_enegia}. A fórmula de somatório do ``Custo de Energia'' é
+O custo de cada passo é o ``Custo de Energia'' da célula em que o agente entra (Grama $1$, Morro $2$, Água $3$), conforme a Tabela \ref{tab:custo_enegia}. A fórmula de somatório do ``Custo de Energia'' é
 \begin{equation}\sum_{i = 0}^{k}  c(v_i) \end{equation} onde $v_0$ é a entrada, $v_k$ é a saída e $c(v_i)$ é o custo de cada célula do caminho.
 A entrada é a célula $(0,5)$, onde o A* começa, e a saída é a célula $(5,0)$.
 
@@ -20,7 +20,7 @@ Foi implementado o estado do jogo para o núcleo do algoritmo A* (A-Estrela). Fo
     \item \textbf{Pai / predecessor $\boldsymbol{\pi}$:} guarda uma referência ao estado para reconstruir o caminho do estado de saída de volta até o estado de entrada;
     \item \textbf{$\boldsymbol{g(v)}$:} é o custo real acumulado do estado de entrada até o estado $v$;
     \item \textbf{$\boldsymbol{h(v)}$:} é a heurística para estimar a distância do estado $v$ até o estado de saída, utilizando a distância de Manhattan;
-    \item \textbf{$\boldsymbol{f(v)}$:} é a prioridade do estado, o custo estimado da solução de menor gasto de energia que passa por $v$, a fórmula:
+    \item \textbf{$\boldsymbol{f(v)}$:} é a prioridade do estado, o custo estimado da solução de menor gasto de energia que passa por $v$, dada pela fórmula:
           \begin{equation} f(v) = g(v) + h(v) \end{equation}
 \end{itemize}
 
@@ -41,7 +41,7 @@ onde $(x_v,y_v)$ é a posição do estado $v$ e $(x_s,y_s)$ é a posição do es
 \newpage
 
 \section{A* (A-Estrela)}
-O algoritmo foi adaptado, conforne a Figura \ref{fig:code_aestrela}, para que o custo inicial $g$ do estado de entrada corresponda ao valor da célula de partida, conforme as regras do jogo:
+O algoritmo foi adaptado, conforme a Figura \ref{fig:code_aestrela}, para que o custo inicial $g$ do estado de entrada corresponda ao valor da célula de partida, conforme as regras do jogo:
 
 \begin{figure}[h]
     \centering
@@ -54,14 +54,14 @@ O algoritmo foi adaptado, conforne a Figura \ref{fig:code_aestrela}, para que o 
 
 \begin{itemize}
     \item \textbf{Fila de prioridade:} foi implementada a fila de prioridade, pois a linguagem GDScript (Godot) não possui uma estrutura pronta. Ela possui as funções enfileirar, que armazena o estado na posição certa pela prioridade $f(v)$, e desenfileirar, que retira o primeiro da fila, o de menor $f(v)$. Na busca A*, utiliza-se $f$ em vez de $g$ para ordenar a fila de prioridade \cite[seção 3.5]{ia2013}.
-    \item \textbf{Início:} o estado de entrada, com $g$ igual ao custo da célula, $h$ pela distância de Manhattan, e entra na fila.
+    \item \textbf{Início:} o estado de entrada, com $g$ igual ao custo da célula $h$ pela distância de Manhattan, entra na fila.
     \item \textbf{Repetição:} enquanto a fila não está vazia, retira o estado de menor $f$.
           \begin{itemize}
               \item Se já foi visitado, descarta.
               \item Se é a saída, termina.
           \end{itemize}
     \item \textbf{Vizinhos:} para cada vizinho $u$, o novo custo é $g(v) + c(u)$. Se for menor que o custo já conhecido, guarda o novo custo e coloca $u$ na fila.
-    \item \textbf{Reconstruir caminho:} a função recebe o estado final e reconstrói caminho pelo vetor de pai (predecessor $\pi$). Um laço percorre os estados da saída até a entrada, e a função retorna o caminho invertido, conforme a Figura \ref{fig:code_reconstruir_caminho}.
+    \item \textbf{Reconstruir caminho:} a função recebe o estado final e reconstrói o caminho pelo atributo pai (predecessor $\pi$) e guarda as posições num vetor. Um laço percorre os estados da saída até a entrada, e a função retorna o caminho invertido, conforme a Figura \ref{fig:code_reconstruir_caminho}.
 \end{itemize}
 
 \begin{figure}[h]
