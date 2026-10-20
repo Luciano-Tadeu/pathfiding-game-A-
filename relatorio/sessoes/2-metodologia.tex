@@ -54,7 +54,7 @@ O algoritmo foi adaptado, conforme a Figura \ref{fig:code_aestrela}, para que o 
 
 \begin{itemize}
     \item \textbf{Fila de prioridade:} foi implementada a fila de prioridade, pois a linguagem GDScript (Godot) não possui uma estrutura pronta. Ela possui as funções enfileirar, que armazena o estado na posição certa pela prioridade $f(v)$, e desenfileirar, que retira o primeiro da fila, o de menor $f(v)$. Na busca A*, utiliza-se $f$ em vez de $g$ para ordenar a fila de prioridade \cite[seção 3.5]{ia2013}.
-    \item \textbf{Início:} o estado de entrada, com $g$ igual ao custo da célula $h$ pela distância de Manhattan, entra na fila.
+    \item \textbf{Início:} o estado de entrada, com $g$ igual ao custo da célula e $h$ pela distância de Manhattan, entra na fila.
     \item \textbf{Repetição:} enquanto a fila não está vazia, retira o estado de menor $f$.
           \begin{itemize}
               \item Se já foi visitado, descarta.
