@@ -101,34 +101,34 @@ func tentar_mover(direcao: Vector2i):
 	# Movimento dentro do Grid 6x6
 	if nova_posicao_grid.x >= limite_min.x and nova_posicao_grid.x <= limite_max.x:
 		if nova_posicao_grid.y >= limite_min.y and nova_posicao_grid.y <= limite_max.y:
-			
-			var tile_data = mapa.get_cell_tile_data(nova_posicao_grid)
-			
-			# Sistema de Energia
-			if tile_data:
-				var custo = tile_data.get_custom_data('custo_energia')
-				energia_gasta += custo
-				historico_energia.append(energia_gasta)
-				atualizar_painel_energia()
+			if $"../TileMapLayer_Game".get_cell_source_id(nova_posicao_grid) != 9:
+				var tile_data = mapa.get_cell_tile_data(nova_posicao_grid)
 				
-			# Dispara as animações
-			match direcao:
-				Vector2i.RIGHT:
-					sprite.play("Right")
-					som_passo.play()
-				Vector2i.LEFT:
-					sprite.play("Left")
-					som_passo.play()
-				Vector2i.DOWN:
-					sprite.play("Down")
-					som_passo.play()
-				Vector2i.UP:
-					sprite.play("Up")
-					som_passo.play()
+				# Sistema de Energia
+				if tile_data:
+					var custo = tile_data.get_custom_data('custo_energia')
+					energia_gasta += custo
+					historico_energia.append(energia_gasta)
+					atualizar_painel_energia()
+					
+				# Dispara as animações
+				match direcao:
+					Vector2i.RIGHT:
+						sprite.play("Right")
+						som_passo.play()
+					Vector2i.LEFT:
+						sprite.play("Left")
+						som_passo.play()
+					Vector2i.DOWN:
+						sprite.play("Down")
+						som_passo.play()
+					Vector2i.UP:
+						sprite.play("Up")
+						som_passo.play()
 			
-			posicao_grid = nova_posicao_grid
-			caminho_percorrido.append(direcao)
-			deslizar_para_novo_bloco()
+				posicao_grid = nova_posicao_grid
+				caminho_percorrido.append(direcao)
+				deslizar_para_novo_bloco()
 
 # Função que Movimenta o personagem no Grid 6x6
 func deslizar_para_novo_bloco():
@@ -145,6 +145,12 @@ func deslizar_para_novo_bloco():
 	await tween.finished
 	sprite.pause()
 	movendo = false
+	
+	if $"../TileMapLayer_Game".get_cell_source_id(posicao_grid) == 15:
+		$"../TileMapLayer_Game".set_cell(posicao_grid, 12, Vector2i(0, 1))
+		var temp = posicao_grid
+		await get_tree().create_timer(0.7).timeout
+		$"../TileMapLayer_Game".set_cell(temp, 0, Vector2i(1, 5))
 	
 	# --- VERIFICAÇÃO DE VITÓRIA ---
 	if posicao_grid == coordenada_saida:
