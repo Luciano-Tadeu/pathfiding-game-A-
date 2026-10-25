@@ -4,9 +4,9 @@ var posicao: Vector2i ## (x, y)
 var pai: Estado ## predecessor 𝜋
 
 var g := 0 ## custo do caminho g(v)
-var h := 0 ## heurística h(v) => Manhattan
+var h: float = 0 ## heurística h(v) => Manhattan
 
-var f: int: ## prioridade (f(v) = g(v) + h(v))
+var f: float: ## prioridade (f(v) = g(v) + h(v))
 	get():
 		return g + h
 
@@ -27,8 +27,14 @@ func vizinhos(matriz: Array) -> Array[Vector2i]:
 
 	return res
 
-func manhattan(pos: Vector2i, obj: Vector2i) -> int:
+func manhattan(pos: Vector2i, obj: Vector2i) -> float:
 	return abs(obj.x - pos.x) + abs(obj.y - pos.y)
+
+func euclidiana(pos: Vector2i, obj: Vector2i) -> float:
+	return sqrt(pow(obj.x - pos.x, 2) + pow(obj.y - pos.y, 2))
+
+func chebyshev(pos: Vector2i, obj: Vector2i) -> float:
+	return max(abs(obj.x - pos.x), abs(obj.y - pos.y))
 
 ## Mostrar no print()
 func _to_string() -> String:
