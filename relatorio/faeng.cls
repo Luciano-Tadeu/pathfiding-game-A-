@@ -504,7 +504,7 @@
 
 \preambulo{
   % \@tipotrabalho~apresentado à Faculdade de Engenharia como parte dos requisitos para a obtenção do título de \@nivelPos~em \@curso.
-  \@tipotrabalho~elaborado como parte das atividades da disciplina \@disciplina, do curso de \@nivelPos~em \@curso, oferecida pela Faculdade de Engenharia.
+  \@tipotrabalho~elaborado como parte das atividades da disciplina de \@disciplina, do curso de \@nivelPos~em \@curso, oferecida pela Faculdade de Engenharia.
 }
 
 %% ---

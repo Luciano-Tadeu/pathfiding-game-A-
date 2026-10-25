@@ -12,8 +12,8 @@ var blocos_disponiveis = [
 	{"source": 0, "atlas": Vector2i(1, 5), "peso": 25},  # GRAMA 1
 	{"source": 0, "atlas": Vector2i(2, 5), "peso":25},  # GRAMA 2
 	{"source": 1, "atlas": Vector2i(8, 6), "peso": 15},  # MORRO
-	{"source": 10, "atlas": Vector2i(0, 0), "peso": 10}, # ÁGUA
-	{"source": 15, "atlas": Vector2i(0, 0), "peso": 8}   # RAIO
+	{"source": 10, "atlas": Vector2i(0, 0), "peso": 10} # ÁGUA
+	# {"source": 15, "atlas": Vector2i(0, 0), "peso": 8}   # RAIO
 ]
 
 func _ready():
@@ -58,7 +58,7 @@ func construir_mapa(quantidade_muros: int = 5):
 			if dentro_do_mapa(pos_muro) and pos_muro != ponto_inicio and pos_muro != ponto_fim:
 				set_cell(pos_muro, 9, Vector2i(0, 0))
 
-	# Água, morro, raio (só em cima de grama, nunca no início/fim)
+	# Água, morro.
 	for x in range(limite_min.x, limite_max.x + 1):
 		for y in range(limite_min.y, limite_max.y + 1):
 			var pos = Vector2i(x, y)
