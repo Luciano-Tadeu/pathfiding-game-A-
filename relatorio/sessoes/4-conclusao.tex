@@ -1,3 +1,24 @@
 \chapter{Conclusão}
-\label{chap:conclusao}
+\label{cap:conclusao}
 
+Este trabalho apresentou uma aplicação interativa em formato de quebra-cabeça 2D para estudar o problema de \textit{pathfinding} com custo de energia não homogêneo. O ambiente foi modelado como uma grade $6 \times 6$ com terrenos de custos distintos (grama, morro, água e parede), e o algoritmo A* com a heurística de Manhattan foi implementado em GDScript para obter o percurso de menor gasto energético. Essa solução serviu de gabarito para a comparação com o caminho traçado pelo jogador.
+
+A heurística de Manhattan é admissível neste cenário, pois o movimento é restrito às direções horizontal e vertical e o menor custo de entrada em uma célula é 1. Essa propriedade garante que o A* encontre um caminho de custo mínimo, o que justifica seu uso como referência.
+
+Nas dez partidas analisadas, o A* obteve consumo de energia igual ou inferior ao do jogador em todas elas. Em cinco partidas os custos coincidiram e, nas outras cinco, o algoritmo gastou menos energia. No total, o jogador acumulou 153 unidades de energia contra 143 do A*, uma diferença de 10 unidades, ou cerca de 6,5\% do consumo do jogador. Em relação aos passos, o jogador realizou 119 no total contra 114 do A*, sendo que o algoritmo
+usou menos passos em apenas três partidas. Os resultados também indicam que o menor número de passos não implica menor consumo, pois um trajeto curto pode atravessar terrenos de custo elevado. Isso reforça a necessidade de considerar a distância e o custo de cada terreno em conjunto, algo que a intuição visual do jogador nem sempre faz bem.
+
+Na comparação entre heurísticas, Manhattan, Euclidiana e Chebyshev encontraram caminhos com o mesmo tamanho e o mesmo custo energético. Manhattan expandiu e visitou o menor número de estados, enquanto Chebyshev registrou o menor tempo. Como esses dados vêm de uma única execução, não permitem concluir que uma heurística seja superior às demais.
+
+Entre as limitações do trabalho, destacam-se o tamanho reduzido da grade, a amostra de apenas dez partidas e a ausência de repetições controladas para a medição de tempo. Assim, as conclusões valem apenas para as execuções realizadas.
+
+Como trabalhos futuros, sugere-se:
+\begin{itemize}
+    \item ampliar a quantidade de partidas e de participantes;
+    \item testar mapas maiores e com terrenos distribuídos de forma aleatória;
+    \item repetir as medições de tempo em condições equivalentes para comparar as heurísticas de forma estatisticamente consistente;
+    \item comparar o A* com outros algoritmos de busca, como Dijkstra e busca gulosa;
+    \item incluir movimentos diagonais, o que exigiria revisar a escolha da heurística.
+\end{itemize}
+
+Em síntese, a aplicação cumpriu o objetivo de mostrar, de forma prática e visual, a vantagem de algoritmos de busca informada na minimização do gasto de recursos, além de servir como ferramenta didática para a disciplina de Inteligência Artificial.

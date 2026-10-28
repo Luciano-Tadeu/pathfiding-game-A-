@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://3n3c72ler16k"]
+
+[ext_resource type="Texture2D" uid="uid://b20fgktkipk1i" path="res://Sprout Lands - Sprites - Basic pack/Sprout Lands - Sprites - Basic pack/Tilesets/menu_inicio.png" id="1_2wktt"]
+[ext_resource type="Script" uid="uid://35wupfvybbu4" path="res://scripts/game/menu_principal_trocar_cena.gd" id="1_cdshd"]
+[ext_resource type="Texture2D" uid="uid://bal6bv5qypjbb" path="res://Sprout Lands - Sprites - Basic pack/Sprout Lands - Sprites - Basic pack/Tilesets/texto_click_to_start.png" id="2_cdshd"]
+[ext_resource type="Script" uid="uid://8d1hp762mqy4" path="res://scripts/game/start.gd" id="3_iylnv"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=504240843]
+script = ExtResource("1_cdshd")
+
+[node name="Back" type="TextureRect" parent="." unique_id=74566202]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_2wktt")
+
+[node name="Start" type="TextureRect" parent="." unique_id=2007284611]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.0
+offset_top = -21.0
+offset_right = 52.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_cdshd")
+script = ExtResource("3_iylnv")

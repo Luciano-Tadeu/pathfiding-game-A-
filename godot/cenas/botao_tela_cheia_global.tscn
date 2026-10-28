@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dwg7j6u5hbn7c"]
+
+[ext_resource type="Texture2D" uid="uid://bulno5w8y6vy8" path="res://Sprout Lands - Sprites - Basic pack/Sprout Lands - Sprites - Basic pack/Objects/botao_tela_cheia.png" id="1_q3w77"]
+[ext_resource type="Texture2D" uid="uid://c3x3oblq2tiop" path="res://Sprout Lands - Sprites - Basic pack/Sprout Lands - Sprites - Basic pack/Objects/botao_tela_cheia_pressionado.png" id="2_cvf5y"]
+[ext_resource type="Script" uid="uid://doafkcgy6e2na" path="res://scripts/game/touch_screen_button_expandir.gd" id="3_kf8w0"]
+[ext_resource type="Texture2D" uid="uid://txcivwgbytkd" path="res://Sprout Lands - Sprites - Basic pack/Sprout Lands - Sprites - Basic pack/Objects/botao_sair_tela_cheia.png" id="4_yr563"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1316795080]
+process_mode = 3
+layer = 100
+
+[node name="TouchScreenButton_Expandir" type="TouchScreenButton" parent="." unique_id=962043927]
+position = Vector2(299, 160)
+texture_normal = ExtResource("1_q3w77")
+texture_pressed = ExtResource("2_cvf5y")
+script = ExtResource("3_kf8w0")
+icone_entrar_tela_cheia = ExtResource("1_q3w77")
+icone_sair_tela_cheia = ExtResource("4_yr563")
+
+[connection signal="released" from="TouchScreenButton_Expandir" to="TouchScreenButton_Expandir" method="_on_released"]

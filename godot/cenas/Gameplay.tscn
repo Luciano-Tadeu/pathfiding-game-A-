@@ -164,6 +164,7 @@ vertical_alignment = 1
 
 [node name="Player" parent="." unique_id=1714485947 instance=ExtResource("3_jgluu")]
 position = Vector2(120, 164)
+limite_deslize = 15.0
 
 [node name="placa_start" type="AnimatedSprite2D" parent="." unique_id=648254629]
 position = Vector2(119.6875, 147.5)

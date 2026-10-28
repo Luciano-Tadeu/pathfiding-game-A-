@@ -13,7 +13,8 @@ func _ready() -> void:
 	player.finish.connect(_on_player_finish);
 
 func _on_button_sair_pressed() -> void:
-	get_tree().quit()
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://cenas/Menu_Principal.tscn")
 
 func _on_button_comparar_pressed() -> void:
 	var gameplay = $"../Gameplay";

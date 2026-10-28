@@ -7,10 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://tuywn2x08j1i" path="res://Sprout Lands - Sprites - Basic pack/Sprout Lands - Sprites - Basic pack/Objects/botao_pause.png" id="6_x7mbq"]
 [ext_resource type="AudioStream" uid="uid://d1ukllobl18o" path="res://sounds/regrowth wip.wav" id="7_x7mbq"]
 [ext_resource type="Texture2D" uid="uid://c8k3y36pxo6ni" path="res://Sprout Lands - Sprites - Basic pack/Sprout Lands - Sprites - Basic pack/Objects/botao_pause_pressionado.png" id="7_xxr1h"]
-[ext_resource type="Texture2D" uid="uid://bulno5w8y6vy8" path="res://Sprout Lands - Sprites - Basic pack/Sprout Lands - Sprites - Basic pack/Objects/botao_tela_cheia.png" id="8_5yt7n"]
-[ext_resource type="Texture2D" uid="uid://c3x3oblq2tiop" path="res://Sprout Lands - Sprites - Basic pack/Sprout Lands - Sprites - Basic pack/Objects/botao_tela_cheia_pressionado.png" id="9_anr53"]
-[ext_resource type="Script" uid="uid://doafkcgy6e2na" path="res://scripts/game/touch_screen_button_expandir.gd" id="10_8v76g"]
-[ext_resource type="Texture2D" uid="uid://txcivwgbytkd" path="res://Sprout Lands - Sprites - Basic pack/Sprout Lands - Sprites - Basic pack/Objects/botao_sair_tela_cheia.png" id="11_anr53"]
 
 [node name="Ambiente" type="Node2D" unique_id=144985110]
 script = ExtResource("1_xxr1h")
@@ -36,13 +32,3 @@ position = Vector2(5, 5)
 texture_normal = ExtResource("6_x7mbq")
 texture_pressed = ExtResource("7_xxr1h")
 action = "ui_cancel"
-
-[node name="TouchScreenButton_Expandir" type="TouchScreenButton" parent="." unique_id=903365731]
-position = Vector2(299, 160)
-texture_normal = ExtResource("8_5yt7n")
-texture_pressed = ExtResource("9_anr53")
-script = ExtResource("10_8v76g")
-icone_entrar_tela_cheia = ExtResource("8_5yt7n")
-icone_sair_tela_cheia = ExtResource("11_anr53")
-
-[connection signal="released" from="TouchScreenButton_Expandir" to="TouchScreenButton_Expandir" method="_on_released"]

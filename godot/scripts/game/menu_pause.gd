@@ -61,4 +61,4 @@ func _on_button_continuar_pressed() -> void:
 	
 # Ao pressionar o botão de sair
 func _on_button_sair_pressed() -> void:
-	get_tree().quit()
+	get_tree().change_scene_to_file("res://cenas/Menu_Principal.tscn")
