@@ -4,7 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://dynikeaxtsl42" path="res://cenas/Gameplay.tscn" id="3_3hemr"]
 [ext_resource type="PackedScene" uid="uid://ceqfdrh14qevq" path="res://cenas/Menu_Pause.tscn" id="5_5re78"]
 [ext_resource type="PackedScene" uid="uid://dl3yee2modhxk" path="res://cenas/Menu_Finish.tscn" id="6_3hemr"]
+[ext_resource type="Texture2D" uid="uid://tuywn2x08j1i" path="res://Sprout Lands - Sprites - Basic pack/Sprout Lands - Sprites - Basic pack/Objects/botao_pause.png" id="6_x7mbq"]
 [ext_resource type="AudioStream" uid="uid://d1ukllobl18o" path="res://sounds/regrowth wip.wav" id="7_x7mbq"]
+[ext_resource type="Texture2D" uid="uid://c8k3y36pxo6ni" path="res://Sprout Lands - Sprites - Basic pack/Sprout Lands - Sprites - Basic pack/Objects/botao_pause_pressionado.png" id="7_xxr1h"]
 
 [node name="Ambiente" type="Node2D" unique_id=144985110]
 script = ExtResource("1_xxr1h")
@@ -24,3 +26,9 @@ visible = false
 process_mode = 3
 stream = ExtResource("7_x7mbq")
 autoplay = true
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="." unique_id=310481494]
+position = Vector2(5, 5)
+texture_normal = ExtResource("6_x7mbq")
+texture_pressed = ExtResource("7_xxr1h")
+action = "ui_cancel"

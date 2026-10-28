@@ -15,6 +15,8 @@
 [ext_resource type="AudioStream" uid="uid://ogf2c0842obx" path="res://sounds/confirmation_001.ogg" id="12_pnhrm"]
 [ext_resource type="AudioStream" uid="uid://c4o78c2p1gad8" path="res://sounds/footstep05.ogg" id="13_fmof6"]
 [ext_resource type="PackedScene" uid="uid://cyyrlkdufcovk" path="res://cenas/Menu_Replay.tscn" id="15_pnhrm"]
+[ext_resource type="Texture2D" uid="uid://tuywn2x08j1i" path="res://Sprout Lands - Sprites - Basic pack/Sprout Lands - Sprites - Basic pack/Objects/botao_pause.png" id="16_tugry"]
+[ext_resource type="Texture2D" uid="uid://c8k3y36pxo6ni" path="res://Sprout Lands - Sprites - Basic pack/Sprout Lands - Sprites - Basic pack/Objects/botao_pause_pressionado.png" id="17_xuqc0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5psx8"]
 texture = ExtResource("1_54w33")
@@ -656,3 +658,9 @@ volume_db = -12.0
 
 [node name="Menu" parent="." unique_id=478347315 instance=ExtResource("15_pnhrm")]
 visible = false
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="." unique_id=1492821927]
+position = Vector2(5, 5)
+texture_normal = ExtResource("16_tugry")
+texture_pressed = ExtResource("17_xuqc0")
+action = "ui_cancel"
