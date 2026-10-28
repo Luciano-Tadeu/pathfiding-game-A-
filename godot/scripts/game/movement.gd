@@ -15,6 +15,11 @@ extends CharacterBody2D
 var energia_gasta: int = 0 
 var historico_energia: Array = []
 
+# Variáveis de controle de Swipe (Mobile)
+var posicao_inicial_toque: Vector2 = Vector2.ZERO
+var detectando_swipe: bool = false
+@export var limite_deslize: float = 30.0 # Pixels mínimos de arrasto para validar o movimento
+
 # Flags de Inicio e Fim
 var started = false
 var finished = false
@@ -32,20 +37,47 @@ var caminho_percorrido = []
 
 func _ready():
 	# Converte a posição atual em píxeis para a posição no grid
-	posicao_grid = Vector2i(position) / tamanho_tile
+	posicao_grid = Vector2i(position / tamanho_tile)
 	atualizar_painel_energia()
 	
 	# Centraliza perfeitamente o jogador no bloco ao iniciar
 	position = Vector2(posicao_grid) * tamanho_tile + Vector2(tamanho_tile / 2.0, tamanho_tile / 2.0)
 
 func _unhandled_input(event):
-	# Ignora os comandos se o jogador ainda estiver no meio de um movimento
-	if movendo:
-		return
-		
 	var direcao = Vector2i.ZERO
 	
-	if event.is_action_pressed("Direita"):
+	# --- 1. LÓGICA DE SWIPE (TELA DE TOQUE) ---
+	if event is InputEventScreenTouch:
+		if event.pressed:
+			posicao_inicial_toque = event.position
+			detectando_swipe = true
+		else:
+			detectando_swipe = false # Dedo saiu da tela
+			
+	elif event is InputEventScreenDrag and detectando_swipe:
+		var vetor_deslize = event.position - posicao_inicial_toque
+		
+		# Se arrastou o dedo o suficiente (passou do limite)
+		if vetor_deslize.length() > limite_deslize:
+			# Compara o X e Y para saber se o arrasto foi mais horizontal ou vertical
+			if abs(vetor_deslize.x) > abs(vetor_deslize.y):
+				# Horizontal
+				if vetor_deslize.x > 0:
+					direcao = Vector2i.RIGHT
+				else:
+					direcao = Vector2i.LEFT
+			else:
+				# Vertical
+				if vetor_deslize.y > 0:
+					direcao = Vector2i.DOWN # Y positivo no Godot é para baixo
+				else:
+					direcao = Vector2i.UP   # Y negativo no Godot é para cima
+			
+			# Desativa para não acionar várias vezes no mesmo arrasto contínuo
+			detectando_swipe = false 
+
+	# --- 2. LÓGICA DE TECLADO / BOTÕES VIRTUAIS (MANTIDA) ---
+	elif event.is_action_pressed("Direita"):
 		direcao = Vector2i.RIGHT
 	elif event.is_action_pressed("Esquerda"):
 		direcao = Vector2i.LEFT
@@ -54,7 +86,9 @@ func _unhandled_input(event):
 	elif event.is_action_pressed("Frente"):
 		direcao = Vector2i.UP
 		
-	if direcao != Vector2i.ZERO:
+	# --- 3. APLICA O MOVIMENTO ---
+	# Só move se houver uma direção e se NÃO estiver no meio de uma animação
+	if direcao != Vector2i.ZERO and not movendo:
 		tentar_mover(direcao)
 
 func tentar_mover(direcao: Vector2i):
@@ -68,6 +102,7 @@ func tentar_mover(direcao: Vector2i):
 	if nova_posicao_grid.x == 7 and nova_posicao_grid.y == 9:
 		if started == false:  
 			started = true
+			$"../placa_start".queue_free()
 			posicao_grid = nova_posicao_grid + direcao
 			
 			var tile_data = mapa.get_cell_tile_data(posicao_grid)
@@ -89,6 +124,7 @@ func tentar_mover(direcao: Vector2i):
 	# Último movimento de FINISH
 	if nova_posicao_grid.x == 12 and nova_posicao_grid.y == 2:
 		finished = true  
+		$"../placa_finish".queue_free()
 		posicao_grid = nova_posicao_grid + direcao
 		caminho_percorrido.append(direcao)
 		sprite.play("Up")

@@ -9,10 +9,7 @@ static var stats: Array[DataStats] = [
 static var execucao := 0
 
 static func astar(matriz: Array, tipo := 0, entrada := Vector2i(0, 5), saida := Vector2i(5, 0)) -> Dictionary:
-	# stats[tipo] = DataStats.new(tipo)
-
 	stats[tipo].tempo_inicio = Time.get_ticks_usec()
-
 
 	var Q := FilaPrioridade.new()
 	var visitada := {}

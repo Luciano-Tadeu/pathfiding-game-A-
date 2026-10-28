@@ -38,7 +38,7 @@ func _on_button_reiniciar_pressed() -> void:
 	get_tree().reload_current_scene()
 
 
-func _on_player_finish(energy_cost: Variant) -> void:
+func _on_player_finish(_energy_cost: Variant) -> void:
 	show()
 	get_tree().paused = true
 	offset.y = altura_ecra 

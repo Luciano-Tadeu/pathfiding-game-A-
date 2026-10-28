@@ -83,8 +83,8 @@ func initiate() -> void:
 		animateScore(1);
 
 func _draw() -> void:
-	drawScore(0, botSteps, botEnergy, maxSteps, maxEnergy, Color(0.466, 0.466, 0.466, 1.0));
-	drawScore(1, playerSteps, playerEnergy, maxSteps, maxEnergy, Color.RED);
+	drawScore(0, botSteps, botEnergy, Color(0.466, 0.466, 0.466, 1.0));
+	drawScore(1, playerSteps, playerEnergy, Color.RED);
 	
 func animateScore(index: int) -> void:
 	for i in range(scores[index].steps.size()):
@@ -107,9 +107,7 @@ func addProgress(index:int, segment: int, value: float) -> void:
 func drawScore(
 	score: int, 
 	steps: Array, 
-	energy: Array, 
-	maxSteps: int,
-	maxEnergy: int, 
+	energy: Array,
 	color: Color
 ) -> void:
 	
@@ -136,8 +134,3 @@ func drawScore(
 		draw_line(oldPos, oldPos.lerp(pos, scores[score].steps[i]), color, 1.5);
 		
 		oldPos = pos;
-	
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

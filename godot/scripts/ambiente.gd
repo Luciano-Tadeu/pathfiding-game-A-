@@ -5,29 +5,31 @@ var limite_min: Vector2i = Vector2i(7, 3)
 
 func _ready() -> void:
 	var matrix := ler_matriz()
-	var caminho2: Array[Vector2i]
+	var caminho_manhattan: Array[Vector2i]
 
 	AEstrela.execucao += 1
-	print("\nExecução ", AEstrela.execucao, ":")
+	print("\nExecução ", AEstrela.execucao, " (média de ", AEstrela.execucao, "):")
 	for i in 3:
 		var res := AEstrela.astar(matrix, i)
 
 		var caminho := AEstrela.reconstruir_caminho(res["estado"])
-		if i == 0: caminho2 = caminho
+		if i == 0:
+			caminho_manhattan = caminho
+		
 		res["stats"].tamanho_caminho += caminho.size()
 		print(DataStats.Tipos.keys()[i], ": ", res["stats"])
 
-	var custo2: Array[int] = []
+	var custo: Array[int] = []
 	GameData.astar_historico.clear();
 
 	GameData.astar_historico.append(Vector2i(0, -1));
-	custo2.append(mapa.get_cell_tile_data(limite_min + Vector2i(0, 5)).get_custom_data("custo_energia"));
-	for i in range(1, caminho2.size()):
-		GameData.astar_historico.append(caminho2[i] - caminho2[i - 1]);
-		custo2.append(custo2[i - 1] + mapa.get_cell_tile_data(limite_min + caminho2[i]).get_custom_data("custo_energia"));
+	custo.append(mapa.get_cell_tile_data(limite_min + Vector2i(0, 5)).get_custom_data("custo_energia"));
+	for i in range(1, caminho_manhattan.size()):
+		GameData.astar_historico.append(caminho_manhattan[i] - caminho_manhattan[i - 1]);
+		custo.append(custo[i - 1] + mapa.get_cell_tile_data(limite_min + caminho_manhattan[i]).get_custom_data("custo_energia"));
 	GameData.astar_historico.append(Vector2i(0, -1));
 
-	GameData.astar_custo = custo2.duplicate(true);
+	GameData.astar_custo = custo.duplicate(true);
 
 func ler_matriz() -> Array:
 	var m := []

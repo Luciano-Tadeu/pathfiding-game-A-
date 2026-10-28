@@ -21,9 +21,9 @@ Além da aplicação interativa, o repositório conta com um **relatório acadê
 
 | Nome Completo | RGA |
 | :--- | :--- |
-| **Carlos Daniel Santana Cunha** | *[Preencher RGA]* |
+| **Carlos Daniel Santana Cunha** | *202421901003* |
 | **Luciano Tadeu Simões Simplicio Junior** | *202421901044* |
-| **[Nome do 3º Integrante]** | *[Preencher RGA]* |
+| **Matheus Mesquita Yukishita** | *202421901048* |
 
 ---
 
@@ -99,6 +99,10 @@ Caso prefira rodar diretamente sem instalar a Godot Engine, o projeto já possui
 3. Clique no botão **Importar** (*Import*).
 4. Navegue até a pasta `godot/` deste repositório e selecione o arquivo `project.godot`.
 5. Após o projeto carregar no editor, pressione **F5** (ou o botão de Play no canto superior direito) para executar o jogo.
+
+#### Opção C: Jogar Online (GitHub Pages)
+Você pode acessar o jogo diretamente pelo navegador, sem precisar instalar nada, através do deploy no GitHub Pages:
+- **Link:** [https://luciano-tadeu.github.io/deploy-trabalho-ia/](https://luciano-tadeu.github.io/deploy-trabalho-ia/)
 
 #### Controles do Jogador
 - **W** — Mover para Frente / Cima
