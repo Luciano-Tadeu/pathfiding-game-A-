@@ -102,6 +102,7 @@ func tentar_mover(direcao: Vector2i):
 	if nova_posicao_grid.x == 7 and nova_posicao_grid.y == 9:
 		if started == false:  
 			started = true
+			$"../placa_start".queue_free()
 			posicao_grid = nova_posicao_grid + direcao
 			
 			var tile_data = mapa.get_cell_tile_data(posicao_grid)
@@ -123,6 +124,7 @@ func tentar_mover(direcao: Vector2i):
 	# Último movimento de FINISH
 	if nova_posicao_grid.x == 12 and nova_posicao_grid.y == 2:
 		finished = true  
+		$"../placa_finish".queue_free()
 		posicao_grid = nova_posicao_grid + direcao
 		caminho_percorrido.append(direcao)
 		sprite.play("Up")

@@ -17,6 +17,10 @@
 [ext_resource type="PackedScene" uid="uid://cyyrlkdufcovk" path="res://cenas/Menu_Replay.tscn" id="15_pnhrm"]
 [ext_resource type="Texture2D" uid="uid://tuywn2x08j1i" path="res://Sprout Lands - Sprites - Basic pack/Sprout Lands - Sprites - Basic pack/Objects/botao_pause.png" id="16_tugry"]
 [ext_resource type="Texture2D" uid="uid://c8k3y36pxo6ni" path="res://Sprout Lands - Sprites - Basic pack/Sprout Lands - Sprites - Basic pack/Objects/botao_pause_pressionado.png" id="17_xuqc0"]
+[ext_resource type="Texture2D" uid="uid://bulno5w8y6vy8" path="res://Sprout Lands - Sprites - Basic pack/Sprout Lands - Sprites - Basic pack/Objects/botao_tela_cheia.png" id="18_1vn6i"]
+[ext_resource type="Texture2D" uid="uid://c3x3oblq2tiop" path="res://Sprout Lands - Sprites - Basic pack/Sprout Lands - Sprites - Basic pack/Objects/botao_tela_cheia_pressionado.png" id="19_4v4pu"]
+[ext_resource type="Script" uid="uid://doafkcgy6e2na" path="res://scripts/game/touch_screen_button_expandir.gd" id="20_cdxmy"]
+[ext_resource type="Texture2D" uid="uid://txcivwgbytkd" path="res://Sprout Lands - Sprites - Basic pack/Sprout Lands - Sprites - Basic pack/Objects/botao_sair_tela_cheia.png" id="21_rqluj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5psx8"]
 texture = ExtResource("1_54w33")
@@ -664,3 +668,13 @@ position = Vector2(5, 5)
 texture_normal = ExtResource("16_tugry")
 texture_pressed = ExtResource("17_xuqc0")
 action = "ui_cancel"
+
+[node name="TouchScreenButton_Expandir" type="TouchScreenButton" parent="." unique_id=402648788]
+position = Vector2(299, 160)
+texture_normal = ExtResource("18_1vn6i")
+texture_pressed = ExtResource("19_4v4pu")
+script = ExtResource("20_cdxmy")
+icone_entrar_tela_cheia = ExtResource("18_1vn6i")
+icone_sair_tela_cheia = ExtResource("21_rqluj")
+
+[connection signal="released" from="TouchScreenButton_Expandir" to="TouchScreenButton_Expandir" method="_on_released"]

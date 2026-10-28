@@ -4,11 +4,85 @@
 [ext_resource type="Script" uid="uid://dtgh7mjaodyvs" path="res://scripts/game/randomizer.gd" id="2_drsy8"]
 [ext_resource type="FontFile" uid="uid://bp70v1mryrko0" path="res://Sprout Lands - Sprites - Basic pack/Sprout Lands - Sprites - Basic pack/Font/Pixuf.ttf" id="3_325o7"]
 [ext_resource type="PackedScene" uid="uid://dck8cdiy1nn34" path="res://cenas/Player.tscn" id="3_jgluu"]
+[ext_resource type="Texture2D" uid="uid://dukqe6ma24sho" path="res://Sprout Lands - Sprites - Basic pack/Sprout Lands - Sprites - Basic pack/Objects/placa_start_spritesheet.png" id="5_325o7"]
+[ext_resource type="Texture2D" uid="uid://b2jsesqfrg6pb" path="res://Sprout Lands - Sprites - Basic pack/Sprout Lands - Sprites - Basic pack/Objects/placa_finish_spritesheet.png" id="6_uoc8f"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s25r4"]
 content_margin_left = 2.0
 content_margin_top = 1.0
 content_margin_right = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uoc8f"]
+atlas = ExtResource("5_325o7")
+region = Rect2(0, 0, 33, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32qbj"]
+atlas = ExtResource("5_325o7")
+region = Rect2(33, 0, 33, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_etajc"]
+atlas = ExtResource("5_325o7")
+region = Rect2(66, 0, 33, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4e0o"]
+atlas = ExtResource("5_325o7")
+region = Rect2(99, 0, 33, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_noigb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uoc8f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32qbj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_etajc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q4e0o")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uo283"]
+atlas = ExtResource("6_uoc8f")
+region = Rect2(0, 0, 33, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0d57n"]
+atlas = ExtResource("6_uoc8f")
+region = Rect2(33, 0, 33, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1b70l"]
+atlas = ExtResource("6_uoc8f")
+region = Rect2(66, 0, 33, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2eppx"]
+atlas = ExtResource("6_uoc8f")
+region = Rect2(99, 0, 33, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_325o7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uo283")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0d57n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1b70l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2eppx")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 4.0
+}]
 
 [node name="Gameplay" type="Node2D" unique_id=9249305]
 
@@ -90,3 +164,15 @@ vertical_alignment = 1
 
 [node name="Player" parent="." unique_id=1714485947 instance=ExtResource("3_jgluu")]
 position = Vector2(120, 164)
+
+[node name="placa_start" type="AnimatedSprite2D" parent="." unique_id=648254629]
+position = Vector2(119.6875, 147.5)
+scale = Vector2(0.68560547, 0.62500006)
+sprite_frames = SubResource("SpriteFrames_noigb")
+autoplay = "default"
+
+[node name="placa_finish" type="AnimatedSprite2D" parent="." unique_id=701355094]
+position = Vector2(200.00002, 34.000008)
+scale = Vector2(0.68560547, 0.62500006)
+sprite_frames = SubResource("SpriteFrames_325o7")
+autoplay = "default"
