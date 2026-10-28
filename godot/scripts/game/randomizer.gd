@@ -13,7 +13,6 @@ var blocos_disponiveis = [
 	{"source": 0, "atlas": Vector2i(2, 5), "peso":25},  # GRAMA 2
 	{"source": 1, "atlas": Vector2i(8, 6), "peso": 15},  # MORRO
 	{"source": 10, "atlas": Vector2i(0, 0), "peso": 10} # ÁGUA
-	# {"source": 15, "atlas": Vector2i(0, 0), "peso": 8}   # RAIO
 ]
 
 func _ready():

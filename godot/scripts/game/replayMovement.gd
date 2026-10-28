@@ -38,7 +38,7 @@ var movendo: bool = false
 
 func _ready():
 	# Converte a posição atual em píxeis para a posição no grid
-	posicao_grid = Vector2i(position) / tamanho_tile
+	posicao_grid = Vector2i(position / tamanho_tile)
 	atualizar_painel_energia()
 	
 	if (tipoPersonagem == TipoPersonagem.PLAYER):
@@ -51,7 +51,7 @@ func _ready():
 	# Centraliza perfeitamente o jogador no bloco ao iniciar
 	position = Vector2(posicao_grid) * tamanho_tile + Vector2(tamanho_tile / 2.0, tamanho_tile / 2.0)
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# Ignora os comandos se o jogador ainda estiver no meio de um movimento
 	if movendo || movimentoAtual >= playerMovimentos.size():
 		return

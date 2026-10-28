@@ -32,7 +32,7 @@ var caminho_percorrido = []
 
 func _ready():
 	# Converte a posição atual em píxeis para a posição no grid
-	posicao_grid = Vector2i(position) / tamanho_tile
+	posicao_grid = Vector2i(position / tamanho_tile)
 	atualizar_painel_energia()
 	
 	# Centraliza perfeitamente o jogador no bloco ao iniciar
