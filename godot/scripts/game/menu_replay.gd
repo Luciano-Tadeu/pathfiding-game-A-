@@ -53,4 +53,3 @@ func _on_assistir_pressed() -> void:
 func _on_voltar_pressed() -> void:
 	get_tree().paused = false;
 	get_tree().reload_current_scene();
-
