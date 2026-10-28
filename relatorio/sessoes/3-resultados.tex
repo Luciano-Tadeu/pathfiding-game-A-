@@ -1,25 +1,160 @@
 \chapter{Resultados}
 \label{chap:resultados}
 
-\begin{figure}[H]
-    \centering
-    \caption{Título da figura}
-    \label{fig:exemplo}
-    \includegraphics[width=0.6\textwidth]{figuras/test.png}
-    \fonte{Elaborado pelos autores (2026).}
+\section{Comparação dos percursos}
+
+A Figura~\ref{fig:grafico-comparativo} apresenta a comparação entre a evolução
+do consumo de energia do jogador e do algoritmo A*. A linha vermelha representa
+o jogador, enquanto a linha cinza representa o A*. O eixo horizontal indica os
+passos e o eixo vertical representa a energia acumulada.
+
+Na execução apresentada, a curva do jogador termina acima da curva do A*,
+indicando um consumo acumulado maior. A representação gráfica permite observar
+como a diferença entre os consumos evolui durante os percursos.
+
+\begin{figure}[htbp]
+	\centering
+	% Insira aqui a imagem do gráfico comparativo.
+	\includegraphics[width=0.95\textwidth]{figuras/tabela_resultados.png}
+	\caption{Comparação da energia acumulada pelo jogador e pelo A*.}
+	\label{fig:grafico-comparativo}
+	\fonte{Elaborado pelos autores (2026).}
 \end{figure}
 
-\begin{table}[H]
-    \centering
-    \caption{Título da tabela}
-    \label{tab:exemplo}
-    \begin{tabular}{lcc}
-        \toprule
-        Coluna 1 & Coluna 2 & Coluna 3 \\
-        \midrule
-        Linha 1  & 0        & 0        \\
-        Linha 2  & 0        & 0        \\
-        \bottomrule
-    \end{tabular}
-    \fonte{Elaborado pelos autores (2026).}
+
+\section{Reprodução dos percursos}
+
+Ao selecionar a opção \textit{Comparar}, o sistema apresenta a reprodução
+simultânea dos dois percursos, conforme a Figura~\ref{fig:replay-percursos}.
+O mapa à esquerda representa o trajeto do jogador, identificado pelo personagem
+de coelho, enquanto o mapa à direita apresenta o percurso do A*, representado
+pelo robô.
+
+A reprodução permite acompanhar visualmente as trajetórias e observar os valores
+de energia exibidos durante a movimentação. Dessa forma, complementa o gráfico
+ao apresentar os percursos diretamente no mapa.
+
+\begin{figure}[htbp]
+	\centering
+	% Insira aqui a imagem da reprodução dos dois percursos.
+	\includegraphics[width=0.95\textwidth]{figuras/percurso.png}
+	\caption{Reprodução simultânea dos percursos do jogador e do A*.}
+	\label{fig:replay-percursos}
+	\fonte{Elaborado pelos autores (2026).}
+\end{figure}
+
+\section{Comparação entre heurísticas}
+
+Embora a análise principal utilize a heurística de Manhattan, também foram
+registrados resultados com as heurísticas Euclidiana e Chebyshev. A
+Tabela~\ref{tab:comparacao-heuristicas} apresenta os dados obtidos na primeira
+execução do sistema.
+
+\begin{table}[htbp]
+	\centering
+	\caption{Comparação das heurísticas na primeira execução.}
+	\label{tab:comparacao-heuristicas}
+	\small
+	\begin{tabular}{|l|r|r|r|}
+		\hline
+		\textbf{Métrica} &
+		\textbf{Manhattan} &
+		\textbf{Euclidiana} &
+		\textbf{Chebyshev} \\
+		\hline
+		Enfileirados       & 34  & 33  & 32  \\
+		\hline
+		Expandidos         & 18  & 20  & 21  \\
+		\hline
+		Visitados          & 18  & 20  & 21  \\
+		\hline
+		Tamanho do caminho & 11  & 11  & 11  \\
+		\hline
+		Custo energético   & 12  & 12  & 12  \\
+		\hline
+		Tempo registrado   & 538 & 416 & 403 \\
+		\hline
+	\end{tabular}
+	\fonte{Dados obtidos pelos autores na primeira execução (2026).}
 \end{table}
+
+Na execução registrada, as três heurísticas encontraram caminhos com o mesmo
+tamanho e custo energético. Entretanto, houve diferenças na quantidade de
+estados enfileirados, expandidos e visitados. Manhattan apresentou o menor
+número de estados expandidos e visitados, com 18 em cada categoria. Chebyshev,
+por sua vez, apresentou o menor tempo registrado, enquanto Manhattan apresentou
+o maior.
+
+Esses resultados descrevem apenas a execução apresentada e não permitem concluir
+que uma heurística seja sempre mais rápida ou expanda menos estados. Para uma
+comparação mais abrangente, seria necessário realizar novas execuções em condições
+equivalentes. Como o foco deste trabalho é Manhattan, as demais heurísticas são
+apresentadas como referência complementar.
+
+\section{Comparação entre partidas}
+
+Para comparar o desempenho do jogador com o resultado de referência do A*,
+a Tabela~\ref{tab:comparacao-partidas} permite registrar a quantidade de passos
+e a energia final de ambos em dez partidas.
+
+\begin{table}[htbp]
+	\centering
+	\caption{Comparação dos resultados obtidos em dez partidas.}
+	\label{tab:comparacao-partidas}
+	\small
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		\textbf{Partida} &
+		\multicolumn{2}{c|}{\textbf{Jogador}} &
+		\multicolumn{2}{c|}{\textbf{A*}} \\
+		\hline
+		& \textbf{Passos} & \textbf{Energia} &
+		\textbf{Passos} & \textbf{Energia} \\
+		\hline
+		1 & 11 & 15 & 11 & 12 \\
+		\hline
+		2 & 11 & 14 & 11 & 14 \\
+		\hline
+		3 & 11 & 16 & 11 & 15 \\
+		\hline
+		4 & 15 & 20 & 15 & 20 \\
+		\hline
+		5 & 11 & 15 & 11 & 15 \\
+		\hline
+		6 & 12 & 15 & 11 & 12 \\
+		\hline
+		7 & 13 & 14 & 11 & 12 \\
+		\hline
+		8 & 11 & 14 & 11 & 14 \\
+		\hline
+		9 & 13 & 17 & 11 & 16 \\
+		\hline
+		10 & 11 & 13 & 11 & 13 \\
+		\hline
+	\end{tabular}
+	\fonte{Elaborado pelos autores (2026).}
+\end{table}
+
+Os resultados mostram que o consumo energético do A* foi igual ou inferior
+ao do jogador nas dez partidas analisadas. Em cinco partidas, ambos apresentaram
+o mesmo consumo de energia; nas outras cinco, o A* obteve um custo menor.
+Não houve, nos registros apresentados, nenhuma partida em que o consumo do A*
+tenha sido superior ao do jogador.
+
+Considerando o conjunto das dez partidas, o jogador acumulou 153 unidades de
+energia, enquanto o A* acumulou 143. A diferença foi de 10 unidades, equivalente
+a aproximadamente 6,5\% do consumo total do jogador. Em média, o consumo foi
+de 15,3 unidades por partida para o jogador e de 14,3 para o A*.
+
+Também foram observadas diferenças na quantidade de passos. Somando as dez
+execuções, o jogador realizou 119 passos, enquanto o A* realizou 103. O algoritmo
+utilizou menos passos em três partidas e a mesma quantidade nas outras sete.
+Esses resultados reforçam a importância de analisar conjuntamente as duas
+métricas, pois a quantidade de movimentos, isoladamente, não determina o
+consumo energético do percurso.
+
+Na amostra analisada, portanto, o A* apresentou consumo energético igual ou
+inferior ao do jogador em todas as partidas. Embora esses dados indiquem uma
+vantagem do algoritmo nos registros obtidos, as conclusões se limitam às
+execuções realizadas e não devem ser generalizadas para situações que não
+foram avaliadas.
